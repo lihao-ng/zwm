@@ -1,0 +1,82 @@
+.score-chart {
+  .apexcharts-tooltip {
+    background-color: $d-blue-1;
+    color: $white;
+    padding: 15px;
+    .custom-chart-tooltip {
+      .title {
+        font-weight: 600;
+        font-size: 15px;
+      }
+      .score {
+        font-weight: 600;
+        font-size: 21px;
+        padding-top: 20px;
+      }
+      .difference {
+        font-size: 13px;
+        .underline {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+.individual-test-chart {
+  padding-top: 40px;
+  .chart-data {
+    margin-bottom: 30px;
+    .info {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 5px;
+      .copy {
+        color: $d-black-2;
+        font-weight: 300;
+        font-size: 16px;
+      }
+      .data {
+        .ques-num {
+          color: $d-black-2;
+          font-weight: 300;
+          font-size: 15px;
+        }
+        .big {
+          font-weight: 600;
+          font-size: 40px;
+          color: $black-2;
+          line-height: 1;
+        }
+        .small {
+          color: $d-black-2;
+          font-size: 11px;
+        }
+      }
+    }
+    .line {
+      border-top: 2px solid $d-gray-4;
+      border-radius: 5px;
+      width: 100%;
+      position: relative;
+      .dot-line {
+        position: absolute;
+        top: -2px;
+        left: 0;
+        border-top: 2px solid $d-orange-1;
+        transition: width 0.3s ease;
+        // width: 50%;
+        .dot {
+          position: absolute;
+          right: 0;
+          top: -6px;
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background-color: $d-orange-1;
+        }
+      }
+    }
+  }
+}

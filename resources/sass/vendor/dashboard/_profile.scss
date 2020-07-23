@@ -1,0 +1,115 @@
+.profile-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  h1 {
+    color: $black-2;
+    position: relative;
+    font-size: 35px;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    @include min-sm {
+      font-size: 40px;
+      margin-bottom: 50px;
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      border-bottom: 2px solid $red-1;
+    }
+  }
+}
+
+.student-profile {
+  form {
+    background-color: $white;
+    // border-radius: 10px;
+    padding: 15px;
+    border: 1px solid $d-black-1;
+    @include min-sm {
+      padding: 30px;
+    }
+    .subtitle {
+      margin-bottom: 20px;
+      font-weight: bold;
+      @include max-sm {
+        font-size: 22px;
+      }
+    }
+    .copy {
+      color: $d-black-1;
+    }
+    .logo {
+      // width: 120px;
+      height: 70px;
+      margin-bottom: 20px;
+      display: block;
+      margin-left: auto; 
+      margin-right: auto;
+      @include min-sm {
+        // width: 150px;
+        height: 90px;
+      }
+    }
+    label {
+      font-weight: 600;
+      color: $d-black-1;
+      @include max-sm {
+        font-size: 14px;
+      }
+    }
+    .required {
+      color: $danger;
+    }
+    input {
+      @include no-appearance;
+      @include placeholder-color($d-black-2);
+      @include no-autofill-bg($d-black-2);
+      width: 100%;
+      border-radius: 0;
+      border: 0;
+      border-bottom: 1px solid $d-black-2;
+      padding: 0px;
+      font-size: 14px;
+      &:focus {
+        outline: 0;
+      }
+      &[disabled] {
+        background-color: transparent;
+        color: $d-gray-3;
+      }
+    }
+    
+    .error-label{
+      background: #f50057;
+      border-radius: .5rem;
+      color: #f7f7f7;
+    }
+    
+    .side-view-wrapper{
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      background-color: #5daa5d94;
+    }
+  
+    .tnc {
+      font-size: 13px;
+      color: $primary;
+      padding-top: 20px;
+      a {
+        color: $primary;
+        text-decoration: underline;
+      }
+    }
+  
+    .link {
+      color: $primary;
+      text-decoration: underline;
+    }
+    
+  }
+}

@@ -1,0 +1,25 @@
+.custom-alert{
+	position: absolute;
+  top: 83px;
+  left: 6px;
+  z-index: 9999;
+  width: 40%;
+  box-shadow: 5px 5px 10px #eee;
+	background: #0b2b3a;
+	color: white;
+	font-weight: 100;
+	transition: all 2s ease;
+	&.hidden{
+		left: -1000px !important;
+		opacity: 0 !important;
+	}
+	.alert-description{
+		font-size: 0.92rem;
+    font-weight: 100;
+	}
+	.action-icon-close{
+		margin-left: auto;
+		cursor: pointer;
+	}
+
+}

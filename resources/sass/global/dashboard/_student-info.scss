@@ -1,0 +1,35 @@
+.student-info-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  h1 {
+    color: $black-2;
+    position: relative;
+    font-size: 35px;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    @include min-sm {
+      font-size: 40px;
+      margin-bottom: 50px;
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 0;
+      // transform: translateX(-50%);
+      width: 50px;
+      border-bottom: 2px solid $red-1;
+    }
+  }
+  .infos {
+    h3 {
+      font-weight: 300;
+      font-size: 16px;
+      margin-bottom: 0;
+    }
+    p {
+      font-weight: bold;
+      font-size: 22px;
+    }
+  }
+}

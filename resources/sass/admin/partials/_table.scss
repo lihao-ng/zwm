@@ -1,0 +1,37 @@
+.custom-title {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 15px;
+}
+
+.card {
+  input, textarea {
+    border: 1px solid $primary !important;
+  }
+  .table {
+    thead {
+      th {
+        &:first-child {
+          padding-left: 8px;
+        }
+        &:last-child {
+          padding-right: 8px;
+        }
+      }
+    }
+  }
+}
+
+.v-select{
+	width: 190px;
+	margin-left: auto;
+	.vs__dropdown-toggle{
+		height: 36px;
+		border-color: #1f3d4e;
+		.vs__selected-options{
+			.vs__search{
+				border: none !important;
+			}
+		}
+	}
+}

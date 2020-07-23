@@ -1,0 +1,68 @@
+.success-label {
+  background-color: $d-green-1;
+  border-radius: 0.5rem;
+  color: #f7f7f7;
+}
+
+.generic-bg {
+  background-color: $white;
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+  flex: 1;
+  &.flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.logo-sliced {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: auto;
+  // @include min-sm {
+  //   width: 100px;
+  // }
+  @include min-md {
+    width: 10vw;
+  }
+}
+
+footer {
+  background-color: $black-2;
+  padding: 15px 30px;
+  height: 53px;
+  position: absolute;
+  width: 100%;
+  bottom: -53px;
+  left: 0;
+  // position: absolute;
+  // bottom: 0;
+  // width: 100%;
+  // left: 0;
+
+  p {
+    color: $white;
+    margin-bottom: 0;
+    text-align: center;
+  }
+}
+
+#student-app {
+  position: relative;
+}
+
+#teacher-app {
+  position: relative;
+}
+
+.n-c {
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  -o-user-select: none;
+  user-select: none;
+}

@@ -1,0 +1,112 @@
+.custom-title {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 15px;
+}
+.custom-table {
+  .pull-left {
+    width: 100%;
+    @include min-sm {
+      width: auto;
+    }
+  }
+  .form-control {
+    border: 1px solid $primary !important;
+    width: 100%;
+    @include placeholder-color($primary);
+    @include min-sm {
+      width: 200px;
+    }
+    &:hover {
+      border: 1px solid $primary !important; 
+    }
+  }
+  .bootstrap-table, .card-body {
+    table {
+      thead {
+        th {
+          font-weight: bold;
+          &.td-actions {
+            display: table-cell !important;
+            @extend .no-stretch;
+          }
+          .sortable {
+            padding-right: 25px;
+          }
+        }
+      }
+      tbody {
+        tr {
+          td {
+            &:last-child {
+              display: table-cell !important;
+              padding-right: 8px !important;
+              a {
+                &:focus {
+                  outline: 0;
+                }
+                &:last-child {
+                  margin-left: 10px;
+                }
+                i {
+                  font-size: 20px;
+                  width: auto;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .card-body {
+    table {
+      thead {
+        th {
+          &:last-child {
+            @extend .no-stretch;
+          }
+        }
+      }
+      tbody {
+        tr {
+          td {
+            &:last-child {
+              @extend .no-stretch;
+            }
+            &:nth-child(4) {
+              @include max-sm {
+                text-align: center;
+              }
+            }
+            &.td-actions {
+              a {
+                &:hover {
+                  color: $primary;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.card {
+  input, textarea {
+    border: 1px solid $primary !important;
+  }
+  .table {
+    thead {
+      th {
+        &:first-child {
+          padding-left: 8px;
+        }
+        &:last-child {
+          padding-right: 8px;
+        }
+      }
+    }
+  }
+}

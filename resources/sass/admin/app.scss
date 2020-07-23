@@ -1,0 +1,33 @@
+@import 'partials/_variables';
+// Start new dashboard styles
+@import '../vendor/partials/_variables';
+@import '../vendor/partials/_mixin';
+@import '../vendor/styles';
+@import '../vendor/partials/_base';
+@import '../vendor/auth/_auth';
+
+@import '../vendor/partials/_buttons';
+
+// New Dashboard
+@import '../vendor/dashboard/_dashboard';
+@import '../vendor/dashboard/_sidebar';
+@import '../vendor/dashboard/_nav';
+@import '../vendor/dashboard/_table';
+@import '../vendor/dashboard/_profile';
+@import '../vendor/dashboard/_chart';
+@import '../vendor/dashboard/_student-info';
+// sweet alert
+@import '../vendor/lbd/plugins/_sweetalert2';
+
+@import '../vendor/lbd/plugins/_datetime-picker';
+
+
+// Partials
+@import 'partials/_mixin';
+@import 'partials/_base';
+@import 'partials/_notifications';
+@import 'partials/_table';
+@import 'partials/_main';
+
+// v-select styles
+@import "vue-select/src/scss/vue-select.scss";
