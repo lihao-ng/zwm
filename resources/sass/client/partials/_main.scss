@@ -1,0 +1,38 @@
+
+.card-body{
+  
+  .admin-input-no-border{
+
+    input[type=text]{
+      width: 100%;
+      border: none !important;
+      background-color: transparent;
+    }
+  }
+
+  .admin-player-avatar{
+    width: 10%;
+  }
+
+  .columns.columns-right.pull-right{
+    text-align: right;
+  }
+
+  .pull-left.search{
+    margin-bottom: 15px;
+  }
+
+  .fixed-table-pagination .pagination{
+
+    justify-content: center;
+
+    li{
+      a{
+        font-size: 16px;
+        padding-left: 8px;
+        padding-right: 8px;
+      }
+    }
+  }
+
+}

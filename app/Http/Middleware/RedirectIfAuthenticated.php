@@ -21,10 +21,7 @@ class RedirectIfAuthenticated{
         return redirect()->route('admin.dashboard');
       } 
 
-      // replaced this once i have the proper route for merchant
-      return redirect()->url('/');
-
-      // return redirect()->route('dashboard');
+      return route('dashboard');
     }
 
     return $next($request);

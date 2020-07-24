@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Routes for Admin
 
 Route::prefix('admin')->name('admin.')->group(function(){
   Route::middleware('guest')->group(function(){
@@ -50,4 +51,28 @@ Route::prefix('admin')->name('admin.')->group(function(){
     // Route::post('statistics/{statistic}', 'Admin\StatisticsController@update')->name('admin.statistic.update');
     // Route::resource('statistics', 'Admin\StatisticsController', ['as' => 'admin']);
   });
+});
+
+
+
+// Routes for Merchants
+
+// Route::get('profile/{player}', 'Client\PlayersController@getProfile')->name('player.profile');
+Route::middleware('guest')->group(function(){
+  Route::get('login', 'Client\AuthController@showLogin')->name('login.show');
+  Route::post('login', 'Client\AuthController@login')->name('login');
+  Route::get('/', 'Client\AuthController@showLogin');
+
+  Route::get('register', 'Client\AuthController@showRegister')->name('register.show');
+  Route::post('register', 'Client\AuthController@register')->name('register');
+});
+// Route::get('forgotpassword', 'Client\AuthController@forgotPassword')->name('forgot-pw');
+// Route::post('forgotpassword/token', 'Client\AuthController@passwordToken')->name('pw-store');
+// Route::get('resetpassword/{verficationToken}', 'Client\AuthController@resetPassword')->name('reset-pw');
+// Route::put('resetpassword/{id}/edit', 'Client\AuthController@reset')->name('reset');
+
+Route::middleware('auth')->group(function(){
+  Route::get('dashboard', 'Admin\DashboardController@index')->name('dashboard');
+
+  Route::get('logout', 'Client\AuthController@logout')->name('logout');
 });
