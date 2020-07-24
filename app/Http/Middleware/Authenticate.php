@@ -18,10 +18,7 @@ class Authenticate extends Middleware{
         return route('admin.login.show');
       }
       
-      // replaced this once i have the proper route for merchant
-      return redirect()->url('/');
-      
-      // return route('login.show');
+      return route('login.show');
     }
   }
 }

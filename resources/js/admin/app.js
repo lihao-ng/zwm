@@ -12,21 +12,21 @@ window.Vue = require('vue');
 // Vue.component("vue-cropper", VueCropper);
 
 
-Vue.component(
-  'test-component',
-  require('@admin/Vue/Components/Test.vue').default
-);
+// Vue.component(
+//   'test-component',
+//   require('../client/node_modules/@admin/Vue/Components/Test.vue').default
+// );
 
 Vue.component(
 	'dashboard-component',
 	require('@admin/Vue/Components/DashboardComponents/DashboardComponent.vue').default
 );
 
-Vue.component('admin-player-form', require('@admin/Vue/Components/Player/PlayerFormComponent.vue').default);
-Vue.component('admin-team-form', require('@admin/Vue/Components/Team/TeamFormComponent.vue').default);
-Vue.component('player-team-statistic-form', require('@admin/Vue/Components/Player_Team/StatisticFormComponent.vue').default);
+// Vue.component('admin-player-form', require('../client/node_modules/@admin/Vue/Components/Player/PlayerFormComponent.vue').default);
+// Vue.component('admin-team-form', require('../client/node_modules/@admin/Vue/Components/Team/TeamFormComponent.vue').default);
+// Vue.component('player-team-statistic-form', require('../client/node_modules/@admin/Vue/Components/Player_Team/StatisticFormComponent.vue').default);
 
-Vue.component('director-form-component', require('@admin/Vue/Components/AboutUs/DirectorFormComponent.vue').default);
+// Vue.component('director-form-component', require('../client/node_modules/@admin/Vue/Components/AboutUs/DirectorFormComponent.vue').default);
 
 
 const app = new Vue({

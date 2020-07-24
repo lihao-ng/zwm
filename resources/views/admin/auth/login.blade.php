@@ -1,7 +1,7 @@
 @extends('admin.layouts.secondary')
 
 @section('meta-content')
-  <title>Login | {{ config('app.name') }} Admin Portal</title>
+  <title>Login | Admin Portal</title>
 @endsection
 
 @section('code', '404')

@@ -17,13 +17,16 @@ require('laravel-mix-merge-manifest');
 mix.alias({
 	'@vendor': '/resources/js/vendor/',
 	'@admin': '/resources/js/admin/',
+	'@client': '/resources/js/client/',
 	'@root': '/resources/js/'
 })
 
 
 mix
 	.js('resources/js/admin/app.js', 'public/js/admin.js')
-	.sass('resources/sass/admin/app.scss', 'public/css/admin.css');
+	.js('resources/js/client/app.js', 'public/js/client.js')
+	.sass('resources/sass/admin/app.scss', 'public/css/admin.css')
+	.sass('resources/sass/client/app.scss', 'public/css/client.css');
 
 if (mix.inProduction()) {
 	mix.version();

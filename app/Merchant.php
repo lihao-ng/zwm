@@ -20,4 +20,8 @@ class Merchant extends Model {
     'photo',
     'approved'
   ]; 
+
+  public function user(){
+    return $this->belongsTo('App\User');
+  }
 }
