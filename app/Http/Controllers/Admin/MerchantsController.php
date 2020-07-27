@@ -143,34 +143,9 @@ class MerchantsController extends Controller{
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function destroy($id){
-
-		$player = Player::find($id);
-		$player->delete();
+  public function destroy(Merchant $merchant){
+    $merchant->delete();
+    
 		return success();
-
-	}
-	
-	public function getToVerify(Request $request){
-
-		// if ($request->wantsJson()) {
-		// 	// dd($this->playerServices->getToVerify());
-    //   return $this->playerServices->getToVerify($request);
-    // }
-
-		// return view( self::PATH . 'verification' );
-	}
-
-	public function verifyPlayer($id){
-		
-		// $player = Player::find($id);
-		// $player->is_verified = 1;
-
-		// // Session::flash('success','Player has been updated successfully!');
-		// Mail::to($player->email)->send( new PlayerVerified($player) );
-		
-		// $player->save();
-
-		// return success();
 	}
 }
