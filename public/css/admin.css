@@ -11928,7 +11928,7 @@ main.logged-in .main-right {
 }
 
 .emcq-sidebar .sidebar-links .sidebar-nav-item .sidebar-nav-link.active {
-  color: #A3A3A3;
+  color: #b1c253;
 }
 
 .emcq-sidebar .sidebar-links .sidebar-nav-item .sidebar-nav-link:hover {
@@ -12072,7 +12072,7 @@ main.logged-in .main-right {
 }
 
 .navbar .navbar-collapse .inner .navbar-nav .nav-item .nav-link.active {
-  color: #A3A3A3;
+  color: #b1c253;
 }
 
 .navbar .navbar-collapse .inner .navbar-nav .nav-item .nav-link:hover {
@@ -13875,6 +13875,18 @@ body {
   height: auto !important;
 }
 
+.view {
+  color: #b1c253;
+}
+
+.edit {
+  color: #f6993f;
+}
+
+.remove {
+  color: #e3342f;
+}
+
 .main-alert {
   position: absolute;
   top: 75px;
@@ -13915,6 +13927,10 @@ body {
   padding-left: 15px;
   padding-right: 15px;
   padding-top: 15px;
+}
+
+.custom-table {
+  overflow: scroll;
 }
 
 .card input,

@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md">
   <div class="navbar-logo-wrapper">
     <a class="navbar-brand" href="#">
-      <img src="{{ asset('images/generic/logo-dark.png') }}" alt="Template Logo" >
+      <img src="{{ asset('images/ZWM_logo.png') }}" alt="Template Logo" >
     </a>
   </div>
 	{{-- <notification-container></notification-container> --}}
@@ -19,6 +19,15 @@
             Dashboard
           </a>
         </li>
+
+        <li class="nav-item mobile">
+          <a class="nav-link fs-18 {{ active_route('admin.merchants.index') }}"
+            href="{{ route('admin.merchants.index') }}">
+            <i class="fal fa-building"></i>
+            Merchants
+          </a>
+        </li>
+
         {{-- <li class="nav-item mobile">
           <a class="nav-link fs-18 {{ ( Request::is('admin/players') || Request::is('admin/players/*') ) ? 'active' : '' }}" href="#player_submenu1" data-toggle="collapse"  data-target="#player_submenu1">
             <i class="fal fa-running"></i>
@@ -41,12 +50,7 @@
             </ul>
           </div> 
         </li>
-        <li class="nav-item mobile">
-          <a class="nav-link fs-18 {{ ( Request::is('admin/teams') || Request::is('admin/teams/*') ) ? 'active' : '' }}" href="{{ route('admin.teams.index') }}">
-            <i class="fal fa-users"></i>
-            Teams
-          </a>
-        </li>
+
         <li class="nav-item mobile">
           <a class="nav-link fs-18 {{ ( Request::is('admin/regions') || Request::is('admin/regions/*') ) ? 'active' : '' }}" href="{{ route('admin.regions.index') }}">
             <i class="fal fa-ball-pile"></i>

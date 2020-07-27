@@ -23,10 +23,6 @@ Route::prefix('admin')->name('admin.')->group(function(){
   });
 
   Route::middleware('auth')->group(function(){
-
-    // Route::post('directors/{director}', 'Admin\BoardDirectorsController@update')->name('admin.director.update');
-    // Route::resource('directors', 'Admin\BoardDirectorsController', ['as' => 'admin']);
-
     Route::get('dashboard', 'Admin\DashboardController@index')->name('dashboard');
     // Route::get('profile', 'Admin\ProfileController@profile')->name('admin.profile');
     // Route::post('profile', 'Admin\ProfileController@update')->name('admin.profile.update');
@@ -38,7 +34,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
     // Route::post('players/verification/{player}', 'Admin\PlayersController@verifyPlayer')->name('admin.players.verification.verify');
     // Route::delete('players/verification/{player}', 'Admin\PlayersController@destroy')->name('admin.players.verification.destroy');
     // Route::get('players/verification', 'Admin\PlayersController@getToVerify')->name('admin.players.verification');
-    // Route::resource('players', 'Admin\PlayersController', ['as' => 'admin']);
+    Route::resource('merchants', 'Admin\MerchantsController');
 
     // Route::get('teams/search', 'Admin\TeamsController@search')->name('admin.team.search');
     // Route::post('teams/{team}', 'Admin\TeamsController@update')->name('admin.team.update');
