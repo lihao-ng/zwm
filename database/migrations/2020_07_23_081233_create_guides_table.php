@@ -17,9 +17,11 @@ class CreateGuidesTable extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('photo')->nullable();
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->string('category')->nullable();
             $table->boolean('recyclable')->default(false);
+            $table->string('photo_upcycling')->nullable();
+            $table->text('description_upcycling')->nullable();
             $table->timestamps();
         });
     }

@@ -34,12 +34,12 @@ class AuthController extends Controller {
 		]);
     
     $user = User::where('email', $request->email)->where('role_id', 2)->first();
-  
+    
     if($user) {
       $approved = $user->merchant->approved;
     }
 
-    if(!$approved) {
+    if(empty($approved)) {
 	    return redirect()->back()->withErrors(['message' => 'Email or password is incorrect.']);
     }
 
@@ -96,7 +96,7 @@ class AuthController extends Controller {
 
 	public function logout() {
 		Auth::logout();
-		
+
 		return redirect()->route('login.show');
 	}
 

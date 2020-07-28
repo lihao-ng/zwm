@@ -12,4 +12,8 @@ class Customer extends Model {
     'code',
     'qr_code'
   ]; 
+
+  public function user(){
+    return $this->belongsTo('App\User');
+  }
 }

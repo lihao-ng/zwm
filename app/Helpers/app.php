@@ -65,4 +65,8 @@
 		$current_name = Route::currentRouteName();
 
 		return $name == $current_name ? 'active' : 'inactive';
-	}
+  }
+
+  function active_url($name, $class = 'active'){
+		return Request::is($name) || Request::is($name . '/*') ? 'active' : '';
+  }

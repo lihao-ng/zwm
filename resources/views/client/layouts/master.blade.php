@@ -1,15 +1,15 @@
-@extends('admin.layouts.partials.main')
+@extends('client.layouts.partials.main')
 
 @section('master')
-	@include('admin.layouts.partials.navbar')
+	@include('client.layouts.partials.navbar')
 	{{-- <v-dialog></v-dialog> --}}
 	<main class="logged-in">
 		<section class="main-left">
-			@include('admin.layouts.partials.sidebar')
+			@include('client.layouts.partials.sidebar')
 		</section>
 		<section class="main-right">
 			{{-- <notification-component></notification-component> --}}
-			@include('admin.layouts.partials.notification')
+			@include('client.layouts.partials.notification')
 			@yield('content')
 		</section>
 	</main>

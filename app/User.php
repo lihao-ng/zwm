@@ -33,16 +33,19 @@ class User extends Authenticatable {
     'remember_token'
   ];
 
-  /**
-   * The attributes that should be cast to native types.
-   *
-   * @var array
-   */
-  protected $casts = [
-    'email_verified_at' => 'datetime',
-  ];
+  public function customer(){
+    return $this->hasOne('App\Customer');
+  }
 
   public function merchant(){
     return $this->hasOne('App\Merchant');
+  }
+
+  public function isAdmin(){
+    return $this->role_id === 1;
+  }
+
+  public function isMerchant(){
+    return $this->role_id === 2;
   }
 }

@@ -1,4 +1,4 @@
-@extends('admin.layouts.partials.main')
+@extends('client.layouts.partials.main')
 
 @section('master')
 	<div class="auth-wrapper">
@@ -16,5 +16,5 @@
     </div>
   </div>
 
-	@include('admin.layouts.partials.notification')
+	@include('client.layouts.partials.notification')
 @endsection

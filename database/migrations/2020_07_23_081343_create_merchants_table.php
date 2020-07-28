@@ -18,14 +18,14 @@ class CreateMerchantsTable extends Migration
             $table->integer('user_id');
             $table->string('name')->nullable();
             $table->string('category')->nullable();
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->string('contact')->nullable();
             $table->string('address')->nullable();
             $table->double('lat')->nullable();
             $table->double('lng')->nullable();
             $table->string('business_hours')->nullable();
             $table->string('link')->nullable();
-            $table->string('other_information')->nullable();
+            $table->text('other_information')->nullable();
             $table->string('photo')->nullable();
             $table->string('approved')->nullable();
             $table->timestamps();

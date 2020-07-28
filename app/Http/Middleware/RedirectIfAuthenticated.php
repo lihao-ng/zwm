@@ -4,7 +4,6 @@ namespace App\Http\Middleware;
 
 use App\Providers\RouteServiceProvider;
 use Closure;
-use Illuminate\Support\Facades\Auth;
 
 class RedirectIfAuthenticated{
   /**
@@ -16,12 +15,12 @@ class RedirectIfAuthenticated{
    * @return mixed
    */
   public function handle($request, Closure $next, $guard = null){
-    if(Auth::check()){
-      if(current_user()->role_id == 1){
+    if(current_user()){
+      if(current_user()->isAdmin()){
         return redirect()->route('admin.dashboard');
       } 
 
-      return route('dashboard');
+      return redirect()->route('dashboard');
     }
 
     return $next($request);
