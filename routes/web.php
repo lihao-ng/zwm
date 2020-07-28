@@ -28,15 +28,12 @@ Route::prefix('admin')->name('admin.')->group(function(){
     // Route::post('profile', 'Admin\ProfileController@update')->name('admin.profile.update');
   	// Route::put('profile', 'Admin\ProfileController@changePassword')->name('admin.profile.password');
 
-    Route::get('logout', 'Admin\AuthController@logout')->name('logout');
-
-    // Route::post('players/{player}', 'Admin\PlayersController@update')->name('admin.player.update');
-    // Route::post('players/verification/{player}', 'Admin\PlayersController@verifyPlayer')->name('admin.players.verification.verify');
-    // Route::delete('players/verification/{player}', 'Admin\PlayersController@destroy')->name('admin.players.verification.destroy');
-    // Route::get('players/verification', 'Admin\PlayersController@getToVerify')->name('admin.players.verification');
-    Route::resource('merchants', 'Admin\MerchantsController');
-
     Route::resource('guides', 'Admin\GuidesController');
+        
+    Route::resource('merchants', 'Admin\MerchantsController');
+    
+    Route::resource('users', 'Admin\UsersController');
+  
 
     // Route::get('teams/search', 'Admin\TeamsController@search')->name('admin.team.search');
     // Route::post('teams/{team}', 'Admin\TeamsController@update')->name('admin.team.update');
@@ -48,6 +45,8 @@ Route::prefix('admin')->name('admin.')->group(function(){
 
     // Route::post('statistics/{statistic}', 'Admin\StatisticsController@update')->name('admin.statistic.update');
     // Route::resource('statistics', 'Admin\StatisticsController', ['as' => 'admin']);
+
+    Route::get('logout', 'Admin\AuthController@logout')->name('logout');
   });
 });
 

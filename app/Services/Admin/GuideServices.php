@@ -3,8 +3,6 @@
 namespace App\Services\Admin;
 
 use App\Guide;
-use App\Rules\PhotoValidation;
-use App\Rules\EisRange;
 
 use Illuminate\Http\Request;
 use App\Services\TransformerService;
@@ -87,7 +85,6 @@ class GuideServices extends TransformerService{
 
     $guide->photo = $photoName;
     $guide->photo_upcycling = $photoUpName;
-
     $guide->save();
 
 		return redirect()->route('admin.guides.index');
@@ -99,9 +96,9 @@ class GuideServices extends TransformerService{
       'name' => $guide->name,
 			'category' => $guide->category,
       'description' => $guide->description,
-			'photo' => $guide->photo,
+			'photo' => $this->imageLibraryService->fullPath($guide->photo),
 			'recyclable' => $guide->recyclable ? 'Yes' : 'No',
-      'photo_upcycling' => $guide->photo_upcycling,
+      'photo_upcycling' => $this->imageLibraryService->fullPath($guide->photo_upcycling),
       'description_upcycling' => $guide->description_upcycling,
 		];
 	}

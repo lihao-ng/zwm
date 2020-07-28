@@ -38,6 +38,14 @@
           </a>
         </li>
 
+        <li class="nav-item mobile">
+          <a class="nav-link fs-18 {{ active_url('admin/users') }}"
+            href="{{ route('admin.users.index') }}">
+            <i class="fal fa-users"></i>
+            Users
+          </a>
+        </li>
+
         {{-- <li class="nav-item mobile">
           <a class="nav-link fs-18 {{ ( Request::is('admin/players') || Request::is('admin/players/*') ) ? 'active' : '' }}" href="#player_submenu1" data-toggle="collapse"  data-target="#player_submenu1">
             <i class="fal fa-running"></i>

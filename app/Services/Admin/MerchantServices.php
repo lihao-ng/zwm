@@ -2,12 +2,18 @@
 
 namespace App\Services\Admin;
 
-use Illuminate\Http\Request;
-use App\Services\TransformerService;
-
 use App\Merchant;
 
+use Illuminate\Http\Request;
+use App\Services\TransformerService;
+use App\Services\ImageLibraryService;
+
 class MerchantServices extends TransformerService{
+  protected $imageLibraryService;
+
+  function __construct(ImageLibraryService $imageLibraryService) {
+    $this->imageLibraryService = $imageLibraryService;
+  }
 
 	public function index($request){
 		$sort = $request->sort ? $request->sort : 'created_at';
@@ -34,9 +40,13 @@ class MerchantServices extends TransformerService{
       'contact' => 'required',
       'link' => 'required',
       'other_information' => 'required',
-      'photo' => 'required',
+      'photo' => 'sometimes|image|max:2000',
       'approved' => 'required'
-		]);
+    ]);
+    
+    if(!$merchant->photo && !$request->photo) {
+      return redirect()->back()->withInput()->withErrors('The photo field is required.');
+    }
 
     $merchant->name = $request->name;
     $merchant->category = $request->category;
@@ -50,49 +60,15 @@ class MerchantServices extends TransformerService{
     $merchant->other_information = $request->other_information;
     $merchant->approved = $request->approved == 'Approved' ? 1 : 0;
 
-    // Upload/update file
-
+    $photoName = $this->imageLibraryService->update($request->file('photo'), $merchant->photo, 'merchants');
+    
+    $merchant->photo = $photoName;
     $merchant->save();
 
 		return redirect()->route('admin.merchants.index');
   }
 
-	public function getToVerify($request){
-		
-		$sort = $request->sort ? $request->sort : 'created_at';
-		$order = $request->order ? $request->order : 'desc';
-		$limit = $request->limit ? $request->limit : 10;
-		$offset = $request->offset ? $request->offset : 0;
-		$query = $request->search ? $request->search : '';
-
-		$merchants = Merchant::where('is_verified', 0)->where('first_name', 'like', "%{$query}%")->orderBy($sort, $order);
-		// $merchants = Merchant::where('is_verified', 0)->get();
-
-		// dd("getToVerify",	$merchants);
-		$listCount =	$merchants->count();
-		$merchants = $merchants->limit($limit)->offset($offset)->get();
-
-
-		return respond(['rows' => $this->transformCollection($merchants), 'total' => $listCount]);
-	}
-
-	// public function searchProducts($product){
-	// 	$products = Product::where('name', 'like', "%{$product}%")->get();
-  //
-	// 	return $products;
-	// }
-
 	public function transform($merchant){
-
-		$descLength = strlen($merchant->description);
-
-		if($descLength>100){
-			$shortDescription = substr($merchant->description, 0, 100) . " . . .";
-		}
-		else{
-			$shortDescription = $merchant->description;
-		}
-
 		return [
 			'id' => $merchant->id,
       'name' => $merchant->name,
@@ -104,7 +80,7 @@ class MerchantServices extends TransformerService{
 			'business_hours' => $merchant->business_hours,
 			'link' => $merchant->link,
 			'other_information' => $merchant->other_information,
-			'photo' => $merchant->photo,
+			'photo' => $this->imageLibraryService->fullPath($merchant->photo),
 			'approved' => $merchant->approved ? 'Approved' : 'Not Approved'
 		];
 	}

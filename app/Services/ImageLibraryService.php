@@ -36,25 +36,9 @@ class ImageLibraryService {
     $baseUrl = url('/');
 
     if($image) {
-      return $baseUrl . '/storage/media/' . $image;
+      return $baseUrl . '/storage/' . $image;
     }
 
     return '';
   }
-
-  // public function validateImage($file) {
-  //   $fileArray = ['image' => $file];
-
-  //   $rules = [
-  //     'image' => 'nullable|image|max:2000'
-  //   ];
-
-  //   $validator = Validator::make($fileArray, $rules);
-
-  //   if($validator->fails()) {
-  //     return false;
-  //   }
-
-  //   return true;
-  // }
 }
