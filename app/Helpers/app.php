@@ -68,5 +68,5 @@
   }
 
   function active_url($name, $class = 'active'){
-		return Request::is('admin/'. $name) || Request::is('admin/' . $name . '/*') ? 'active' : '';
+		return Request::is($name) || Request::is($name . '/*') ? 'active' : '';
   }

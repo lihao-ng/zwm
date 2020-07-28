@@ -11540,6 +11540,13 @@ footer p {
   font-weight: bold;
 }
 
+.back-btn {
+  color: #fff;
+  background-color: #b1c253;
+  border-radius: 50%;
+  font-size: 15px;
+}
+
 main .main-left {
   position: fixed;
   top: 85px;

@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('client.layouts.master')
 
 @section('meta-content')
   <title>Dashboard | {{ config('app.name') }} Admin Portal</title>

@@ -14,14 +14,24 @@
     <div class="inner">
       <ul class="navbar-nav">
         <li class="nav-item mobile">
-          <a class="nav-link fs-18 {{ active_route('admin.dashboard') }}" href="{{ route('admin.dashboard') }}">
+          <a class="nav-link fs-18 {{ active_url('admin/dashboard') }}" href="{{ route('admin.dashboard') }}">
             <i class="fal fa-home-lg-alt"></i>
             Dashboard
           </a>
         </li>
 
+        @if(current_user()->role_id == 1)
+          <li class="nav-item mobile">
+            <a class="nav-link fs-18 {{ active_url('admin/guides') }}"
+              href="{{ route('admin.guides.index') }}">
+              <i class="fal fa-book"></i>
+              Guides
+            </a>
+          </li>
+        @endif
+
         <li class="nav-item mobile">
-          <a class="nav-link fs-18 {{ active_route('admin.merchants.index') }}"
+          <a class="nav-link fs-18 {{ active_url('admin/merchants') }}"
             href="{{ route('admin.merchants.index') }}">
             <i class="fal fa-building"></i>
             Merchants

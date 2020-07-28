@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('meta-content')
-  <title>Merchants | {{ config('app.name') }} Admin Portal</title>
+  <title>Merchants</title>
 @endsection
 
 @section('content')
@@ -20,7 +20,7 @@
           <thead>
             <th data-field="id" class="text-center align-middle" data-sortable="true">ID</th>
             <th data-field="name" class="align-middle" data-sortable="true">Name</th>
-            <th data-field="email" class="align-middle">Email</th>
+            <th data-field="category" class="align-middle">Category</th>
             <th data-field="address" class="align-middle">Address</th>
             <th data-field="approved" class="align-middle" data-sortable="true">Approved</th>
             <th data-field="actions" class="td-actions text-center align-middle" data-events="operateEvents" data-formatter="operateFormatter">

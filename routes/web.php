@@ -22,7 +22,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
     Route::get('/', 'Admin\AuthController@showLogin');
   });
 
-  Route::middleware('auth')->group(function(){
+  Route::middleware('check.auth:admin')->group(function(){
     Route::get('dashboard', 'Admin\DashboardController@index')->name('dashboard');
     // Route::get('profile', 'Admin\ProfileController@profile')->name('admin.profile');
     // Route::post('profile', 'Admin\ProfileController@update')->name('admin.profile.update');
@@ -35,6 +35,8 @@ Route::prefix('admin')->name('admin.')->group(function(){
     // Route::delete('players/verification/{player}', 'Admin\PlayersController@destroy')->name('admin.players.verification.destroy');
     // Route::get('players/verification', 'Admin\PlayersController@getToVerify')->name('admin.players.verification');
     Route::resource('merchants', 'Admin\MerchantsController');
+
+    Route::resource('guides', 'Admin\GuidesController');
 
     // Route::get('teams/search', 'Admin\TeamsController@search')->name('admin.team.search');
     // Route::post('teams/{team}', 'Admin\TeamsController@update')->name('admin.team.update');
@@ -67,8 +69,8 @@ Route::middleware('guest')->group(function(){
 // Route::get('resetpassword/{verficationToken}', 'Client\AuthController@resetPassword')->name('reset-pw');
 // Route::put('resetpassword/{id}/edit', 'Client\AuthController@reset')->name('reset');
 
-Route::middleware('auth')->group(function(){
-  Route::get('dashboard', 'Admin\DashboardController@index')->name('dashboard');
+Route::middleware('check.auth:merchant')->group(function(){
+  Route::get('dashboard', 'Client\DashboardController@index')->name('dashboard');
 
   Route::get('logout', 'Client\AuthController@logout')->name('logout');
 });

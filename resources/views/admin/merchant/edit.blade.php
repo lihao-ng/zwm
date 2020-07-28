@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('meta-content')
-  <title>Edit Merchant | {{ config('app.name') }} Admin Portal</title>
+  <title>Edit Merchant</title>
 @endsection
 
 @section('content')
@@ -31,7 +31,7 @@
                   "Thrift Shop (Second-hand Shop)" => "Thrift Shop (Second-hand Shop)", 
                   "Upcycling, Recycling &amp; Waste Disposal" => "Upcycling, Recycling &amp; Waste Disposal", 
                   "Traditional &amp; Wet Market" => "Traditional &amp; Wet Market" 
-                  ], '1', ['class' => 'form-control', 'required' => 'true']) }}
+                  ], null, ['class' => 'form-control', 'required' => 'true']) }}
               </div>
             </div>
 

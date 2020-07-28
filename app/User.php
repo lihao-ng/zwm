@@ -45,4 +45,12 @@ class User extends Authenticatable {
   public function merchant(){
     return $this->hasOne('App\Merchant');
   }
+
+  public function isAdmin(){
+    return $this->role_id === 1;
+  }
+
+  public function isMerchant(){
+    return $this->role_id === 2;
+  }
 }

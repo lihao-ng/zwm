@@ -1,4 +1,4 @@
-@extends('admin.layouts.secondary')
+@extends('client.layouts.secondary')
 
 @section('meta-content')
   <title>Login | Merchant Portal</title>
