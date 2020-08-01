@@ -6,16 +6,31 @@
 					<i class="fal fa-home-lg-alt"></i>
 					Dashboard
 				</a>
-			</li>
-			{{-- @route_exists('inquiries.index')
-				<li class="sidebar-nav-item">
-					<a class="sidebar-nav-link fs-18 {{ active_route('inquiries.index') }}"
-						href="{{ route('inquiries.index') }}">
-						<i class="fal fa-envelope-open-text"></i>
-						Inquiries
-					</a>
-				</li>
-			@endroute_exists --}}
+      </li>
+      
+			<li class="sidebar-nav-item">
+        <a class="sidebar-nav-link fs-18  {{ active_url('accepting-items') }}"
+          href="{{ route('accepting-items.index') }}">
+          <i class="fal fa-trash"></i>
+          Accepting Items
+        </a>
+      </li>
+
+			<li class="sidebar-nav-item">
+        <a class="sidebar-nav-link fs-18  {{ active_url('offers') }}"
+          href="{{ route('offers.index') }}">
+          <i class="fal fa-ticket"></i>
+          Offers
+        </a>
+      </li>
+
+			<li class="sidebar-nav-item">
+        <a class="sidebar-nav-link fs-18  {{ active_url('award-points') }}"
+          href="{{ route('award-points.index') }}">
+          <i class="fal fa-calculator"></i>
+          Award Points
+        </a>
+      </li>
 
 			{{-- <a class="nav-link collapsed py-1" href="#submenu1sub1" data-toggle="collapse" data-target="#submenu1sub1"><span>Customers</span></a>
 			<div class="collapse" id="submenu1sub1" aria-expanded="false">

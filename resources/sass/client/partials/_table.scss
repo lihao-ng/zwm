@@ -4,6 +4,10 @@
   padding-top: 15px;
 }
 
+.custom-table {
+  overflow: scroll; 
+}
+
 .card {
   input, textarea, select {
     border: 1px solid $primary !important;
