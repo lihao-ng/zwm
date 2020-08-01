@@ -16,4 +16,8 @@ class TransactionItem extends Model {
   public function transaction(){
     return $this->belongsTo('App\Transaction');
   }
+
+  public function offer(){
+    return $this->belongsTo('App\Offer');
+  }
 }

@@ -31,6 +31,20 @@
               </div>
             </div>
 
+            <div class="col-12 col-md-6 mb-3">
+              <div class="form-group has-label">
+                <label>Coupon Prefix</label>
+                {{ Form::text('prefix', null, ['id' => 'form-validation', 'class' => 'form-control', 'required' => 'true', 'disabled' => 'true']) }}
+              </div>
+            </div>
+
+            <div class="col-12 col-md-6 mb-3">
+              <div class="form-group has-label">
+                <label>Quantity/How many coupons</label>
+                {{ Form::text('quantity', null, ['id' => 'form-validation', 'class' => 'form-control', 'required' => 'true', 'disabled' => 'true']) }}
+              </div>
+            </div>
+
             <div class="col-12 mb-3">
               <div class="form-group has-label">
                 <label>Description</label>

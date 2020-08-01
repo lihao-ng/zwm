@@ -1,5 +1,5 @@
 <template>
-  <div class="col-12 mb-3">
+  <div class="col-12">
     <div class="form-group has-label">
       <label>User's Unique Code</label>
 

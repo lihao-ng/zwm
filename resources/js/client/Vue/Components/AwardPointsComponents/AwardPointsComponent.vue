@@ -20,7 +20,7 @@
 
                 <award-item-componenent ref="item"></award-item-componenent>
 
-                <div class="col text-right">
+                <div class="col text-right my-2">
                   <button type="submit" value="Submit" class="btn btn-primary" @click="onSubmit()">Award Points</button>
                 </div>
               </div>
@@ -71,7 +71,7 @@
       onSubmit: function() { 
         let account = this.$refs.account;
         let item = this.$refs.item;
-        console.log(this.$refs.item);
+        
         let formData = new FormData();
         let validateAccount = this.validateAccount(account.uniqueCode);
         let validateItems = this.validateItems(item);

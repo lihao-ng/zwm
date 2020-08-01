@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md">
   <div class="navbar-logo-wrapper">
     <a class="navbar-brand" href="#">
-      <img src="{{ asset('images/generic/logo-dark.png') }}" alt="Template Logo" >
+      <img src="{{ asset('images/ZWM_logo.png') }}" alt="Template Logo" >
     </a>
   </div>
 	{{-- <notification-container></notification-container> --}}
@@ -28,10 +28,26 @@
         </li>
 
         <li class="nav-item mobile">
-          <a class="nav-link fs-18 {{ active_route('offers') }}" href="{{ route('offers.index') }}">
-            <i class="fal fa-ticket"></i>
+          <a class="nav-link fs-18 {{ active_route('offers') }}" href="#offer_submenu1" data-toggle="collapse"  data-target="#offer_submenu1">
+            <i class="fal fa-bars"></i>
             Offers
           </a>
+          <div class="collapse" id="offer_submenu1" aria-expanded="false">
+            <ul class="flex-column nav pl-3 pt-2">
+              <li class="py-2">
+                <a class="sidebar-nav-link fs-18 {{ active_route('offers') }}" href="{{ route('offers.index') }}">
+                  <i class="fal fa-percent"></i>
+                  Coupons
+                </a>
+              </li>
+              <li class="py-2">
+                <a class="sidebar-nav-link fs-18 {{ active_route('promo-codes') }}" href="{{ route('promo-codes.index') }}">
+                  <i class="fal fa-ticket"></i>
+                    Promo code
+                </a>
+              </li>
+            </ul>
+          </div> 
         </li>
 
         <li class="nav-item mobile">

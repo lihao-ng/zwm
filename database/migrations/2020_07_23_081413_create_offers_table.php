@@ -18,6 +18,8 @@ class CreateOffersTable extends Migration
             $table->integer('merchant_id');
             $table->string('name')->nullable();
             $table->string('type')->nullable();
+            $table->string('prefix')->nullable();
+            $table->integer('quantity')->nullable();
             $table->string('description')->nullable();
             $table->string('points')->nullable();
             $table->string('photo')->nullable();

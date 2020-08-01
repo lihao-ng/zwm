@@ -9,8 +9,18 @@ class Offer extends Model {
     'merchant_id',
     'name',
     'type',
+    'prefix',
+    'quantity',
     'description',
     'points',
     'photo'
   ]; 
+
+  public function merchant(){
+    return $this->belongsTo('App\Merchant');
+  }
+
+  public function promocodes(){
+    return $this->hasMany('App\Promocode');
+  }
 }

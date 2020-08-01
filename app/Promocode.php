@@ -10,4 +10,12 @@ class Promocode extends Model {
     'code',
     'redeemed'
   ]; 
+
+  public function transaction_item(){
+    return $this->belongsTo('App\TransactionItem');
+  }
+
+  public function offer(){
+    return $this->belongsTo('App\Offer');
+  }
 }
