@@ -3,6 +3,7 @@
 namespace App\Services\Client;
 
 use App\Offer;
+use App\Promocode;
 
 use Illuminate\Http\Request;
 use App\Services\TransformerService;
@@ -34,6 +35,8 @@ class OfferServices extends TransformerService{
     $request->validate([
 			'name' => 'required|unique:offers',
 			'points' => 'required|numeric',
+			'prefix' => 'required|unique:offers',
+			'quantity' => 'required',
 			'description' => 'required',
       'photo' => 'required|image|max:2000'
     ]);
@@ -41,6 +44,8 @@ class OfferServices extends TransformerService{
     $offer = new Offer();
     $offer->merchant_id = current_user()->merchant->id;
     $offer->name = $request->name;
+    $offer->prefix = $request->prefix;
+    $offer->quantity = $request->quantity;
     $offer->points = $request->points;
     $offer->type = 'Promo';
     $offer->description = $request->description;
@@ -50,7 +55,27 @@ class OfferServices extends TransformerService{
     $offer->photo = $photoName;
     $offer->save();
 
-		return redirect()->route('accepting-items.index');
+    $this->generatePromocodes($offer);
+
+		return redirect()->route('offers.index');
+  }
+
+  public function generatePromocodes($offer){
+    $prefixExist = Promocode::where('code', 'LIKE', '%' . $offer->prefix . '%')->first();
+    $start = 1;
+    $end = $offer->quantity;
+    
+    if($prefixExist){
+      $start = $offer->quantity;
+      $end = $offer->quantity + $offer->quantity;
+    }
+
+    for($i = $start; $i <= $end; $i++){
+      $promocode = new Promocode();
+      $promocode->offer_id = $offer->id;
+      $promocode->code = $offer->prefix . $i;
+      $promocode->save();
+    }
   }
   
   public function update(Request $request, Offer $offer){
@@ -81,6 +106,8 @@ class OfferServices extends TransformerService{
 			'id' => $offer->id,
       'name' => $offer->name,
       'points' => $offer->points,
+      'prefix' => $offer->prefix,
+      'quantity' => $offer->quantity,
       'description' => $offer->description,
 			'photo' => $this->imageLibraryService->fullPath($offer->photo)
 		];

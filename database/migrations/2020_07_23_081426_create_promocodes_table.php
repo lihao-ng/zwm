@@ -16,9 +16,9 @@ class CreatePromocodesTable extends Migration
         Schema::create('promocodes', function (Blueprint $table) {
             $table->id();
             $table->integer('offer_id');
-            $table->integer('transaction_item_id');
+            $table->integer('transaction_item_id')->nullable();
             $table->string('code')->unique();
-            $table->boolean('redeemed')->default(false);
+            $table->string('qr_code')->nullable();
             $table->timestamps();
         });
     }

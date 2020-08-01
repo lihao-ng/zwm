@@ -63,5 +63,9 @@ Route::middleware('check.auth:merchant')->group(function(){
 
   Route::resource('award-points', 'Client\AwardPointsController')->only(['index', 'store']);
 
+  Route::get('promo-codes/generate', 'Client\PromoCodesController@showGenerate')->name('promo-codes.generate.show');
+  Route::post('promo-codes/generate', 'Client\PromoCodesController@generate')->name('promo-codes.generate');
+  Route::resource('promo-codes', 'Client\PromoCodesController');
+
   Route::get('logout', 'Client\AuthController@logout')->name('logout');
 });

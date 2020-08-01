@@ -16,13 +16,30 @@
         </a>
       </li>
 
-			<li class="sidebar-nav-item">
-        <a class="sidebar-nav-link fs-18  {{ active_url('offers') }}"
-          href="{{ route('offers.index') }}">
-          <i class="fal fa-ticket"></i>
-          Offers
-        </a>
-      </li>
+      <li class="sidebar-nav-item">
+				<a id="sidebar_offer_btn" class="sidebar-nav-link fs-18 {{ active_url('offers') }}" href="#offer_submenu1" data-toggle="collapse" data-target="#offer_submenu1" >
+					<i class="fal fa-bars"></i>
+					Offers
+					<i id="sidebar_offer_btn_icon2" class="fal fa-angle-down text-right align-middle"></i>
+				</a>
+
+				<div class="collapse" id="offer_submenu1" aria-expanded="false">
+					<ul class="flex-column nav pl-3 pt-2">
+						<li class="py-2">
+							<a class="sidebar-nav-link fs-18" href="{{ route('offers.index') }}">
+								<i class="fal fa-percent"></i>
+								Coupons
+							</a>
+						</li>
+						<li class="py-2">
+							<a class="sidebar-nav-link fs-18" href="{{ route('promo-codes.index') }}">
+								<i class="fal fa-ticket"></i>
+									Promo codes
+							</a>
+						</li>
+					</ul>
+				</div> 
+			</li>
 
 			<li class="sidebar-nav-item">
         <a class="sidebar-nav-link fs-18  {{ active_url('award-points') }}"
@@ -31,30 +48,6 @@
           Award Points
         </a>
       </li>
-
-			{{-- <a class="nav-link collapsed py-1" href="#submenu1sub1" data-toggle="collapse" data-target="#submenu1sub1"><span>Customers</span></a>
-			<div class="collapse" id="submenu1sub1" aria-expanded="false">
-				<ul class="flex-column nav pl-4">
-					<li class="nav-item">
-						<a class="nav-link p-1" href="#">
-							<i class="fa fa-fw fa-clock-o"></i> Daily 
-						</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link p-1" href="#">
-							<i class="fa fa-fw fa-dashboard"></i> Dashboard 
-						</a>
-					</li>
-					<li class="nav-item">
-							<a class="nav-link p-1" href="#">
-									<i class="fa fa-fw fa-bar-chart"></i> Charts </a>
-					</li>
-					<li class="nav-item">
-							<a class="nav-link p-1" href="#">
-									<i class="fa fa-fw fa-compass"></i> Areas </a>
-					</li>
-				</ul>
-			</div> --}}
 		
 			<li class="sidebar-nav-item">
 				<a class="sidebar-nav-link fs-18" href="{{ route('logout') }}">
@@ -70,9 +63,9 @@
 
 	<script>
 
-		var sidebarPlayerBtn = document.getElementById("sidebar_player_btn");
-		var sidebarPlayerBtnIcon2 = document.getElementById("sidebar_player_btn_icon2");
-		var sidebarPlayerSubMenu = document.getElementById("player_submenu1");
+		var sidebarPlayerBtn = document.getElementById("sidebar_offer_btn");
+		var sidebarPlayerBtnIcon2 = document.getElementById("sidebar_offer_btn_icon2");
+		var sidebarPlayerSubMenu = document.getElementById("offer_submenu1");
 
 		sidebarPlayerBtn.addEventListener("click", () => {
 			if(!sidebarPlayerSubMenu.classList.contains("show")){

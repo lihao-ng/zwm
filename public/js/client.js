@@ -1982,7 +1982,6 @@ __webpack_require__.r(__webpack_exports__);
 
       var account = this.$refs.account;
       var item = this.$refs.item;
-      console.log(this.$refs.item);
       var formData = new FormData();
       var validateAccount = this.validateAccount(account.uniqueCode);
       var validateItems = this.validateItems(item);
@@ -59403,7 +59402,7 @@ var render = function() {
                     _vm._v(" "),
                     _c("award-item-componenent", { ref: "item" }),
                     _vm._v(" "),
-                    _c("div", { staticClass: "col text-right" }, [
+                    _c("div", { staticClass: "col text-right my-2" }, [
                       _c(
                         "button",
                         {
@@ -59461,7 +59460,88 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "col-12 mb-3" }, [
-    _c("div", { staticClass: "table-responsive text-center" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-12" }, [
+        _c("div", { staticClass: "form-group has-label mb-0" }, [
+          _c("label", [_vm._v("Item")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.name,
+                expression: "name"
+              },
+              {
+                name: "on-clickaway",
+                rawName: "v-on-clickaway",
+                value: _vm.hideProducts,
+                expression: "hideProducts"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text" },
+            domProps: { value: _vm.name },
+            on: {
+              focus: function($event) {
+                return _vm.getProducts()
+              },
+              input: [
+                function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.name = $event.target.value
+                },
+                function($event) {
+                  return _vm.getProducts()
+                }
+              ]
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _vm.searchProducts.length
+          ? _c("div", { staticClass: "vue-dropdown" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "dropdown-menu",
+                  class: { "vue-show": _vm.haveData }
+                },
+                [
+                  _c(
+                    "div",
+                    _vm._l(_vm.searchProducts, function(searchProduct, index) {
+                      return _c(
+                        "div",
+                        {
+                          key: index,
+                          staticClass: "dropdown-item text-capitalize",
+                          on: {
+                            click: function($event) {
+                              return _vm.onProductSelected(searchProduct)
+                            }
+                          }
+                        },
+                        [
+                          _c("p", { staticClass: "text-center" }, [
+                            _vm._v(_vm._s(searchProduct.name) + " ")
+                          ])
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                ]
+              )
+            ])
+          : _vm._e()
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "table-responsive text-center mt-4" }, [
       _c("table", { staticClass: "table table-bordered table-striped" }, [
         _vm._m(0),
         _vm._v(" "),
@@ -59633,99 +59713,18 @@ var render = function() {
           ],
           2
         )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "text-right mt-2" }, [
-        _c(
-          "div",
-          {
-            staticClass: "btn btn-primary pull-right",
-            on: { click: _vm.addCustomItem }
-          },
-          [_vm._v("Add a custom item")]
-        )
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "row mt-2" }, [
-      _c("div", { staticClass: "col-12" }, [
-        _c("div", { staticClass: "form-group has-label mb-0" }, [
-          _c("label", [_vm._v("Item")]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.name,
-                expression: "name"
-              },
-              {
-                name: "on-clickaway",
-                rawName: "v-on-clickaway",
-                value: _vm.hideProducts,
-                expression: "hideProducts"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: { type: "text" },
-            domProps: { value: _vm.name },
-            on: {
-              focus: function($event) {
-                return _vm.getProducts()
-              },
-              input: [
-                function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.name = $event.target.value
-                },
-                function($event) {
-                  return _vm.getProducts()
-                }
-              ]
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _vm.searchProducts.length
-          ? _c("div", { staticClass: "vue-dropdown" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "dropdown-menu",
-                  class: { "vue-show": _vm.haveData }
-                },
-                [
-                  _c(
-                    "div",
-                    _vm._l(_vm.searchProducts, function(searchProduct, index) {
-                      return _c(
-                        "div",
-                        {
-                          key: index,
-                          staticClass: "dropdown-item text-capitalize",
-                          on: {
-                            click: function($event) {
-                              return _vm.onProductSelected(searchProduct)
-                            }
-                          }
-                        },
-                        [
-                          _c("p", { staticClass: "text-center" }, [
-                            _vm._v(_vm._s(searchProduct.name) + " ")
-                          ])
-                        ]
-                      )
-                    }),
-                    0
-                  )
-                ]
-              )
-            ])
-          : _vm._e()
-      ])
+    _c("div", { staticClass: "text-right my-2" }, [
+      _c(
+        "div",
+        {
+          staticClass: "btn btn-primary pull-right",
+          on: { click: _vm.addCustomItem }
+        },
+        [_vm._v("Add a custom item")]
+      )
     ])
   ])
 }
@@ -59770,7 +59769,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "col-12 mb-3" }, [
+  return _c("div", { staticClass: "col-12" }, [
     _c(
       "div",
       { staticClass: "form-group has-label" },

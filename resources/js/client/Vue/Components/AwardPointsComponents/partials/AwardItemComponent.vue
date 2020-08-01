@@ -1,6 +1,25 @@
 <template>
   <div class="col-12 mb-3">
-    <div class="table-responsive text-center">
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group has-label mb-0">
+          <label>Item</label>
+          <input type="text" v-model="name" class="form-control" @focus="getProducts()" @input="getProducts()" v-on-clickaway="hideProducts" />
+        </div>
+
+        <div class="vue-dropdown" v-if="searchProducts.length">
+          <div class="dropdown-menu" :class="{ 'vue-show': haveData }">
+            <div>
+              <div class="dropdown-item text-capitalize" v-for="(searchProduct, index) in searchProducts" :key="index" @click="onProductSelected(searchProduct)">
+                <p class="text-center">{{ searchProduct.name }} </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-responsive text-center mt-4">
       <table class="table table-bordered table-striped">
         <thead>
           <tr>
@@ -47,29 +66,10 @@
           </tr>
         </tbody>
       </table>
-
-      <div class="text-right mt-2">
-        <div class="btn btn-primary pull-right" @click="addCustomItem">Add a custom item</div>
-      </div>
     </div>
     
-    <div class="row mt-2">
-      <div class="col-12">
-        <div class="form-group has-label mb-0">
-          <label>Item</label>
-          <input type="text" v-model="name" class="form-control" @focus="getProducts()" @input="getProducts()" v-on-clickaway="hideProducts" />
-        </div>
-
-        <div class="vue-dropdown" v-if="searchProducts.length">
-          <div class="dropdown-menu" :class="{ 'vue-show': haveData }">
-            <div>
-              <div class="dropdown-item text-capitalize" v-for="(searchProduct, index) in searchProducts" :key="index" @click="onProductSelected(searchProduct)">
-                <p class="text-center">{{ searchProduct.name }} </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="text-right my-2">
+      <div class="btn btn-primary pull-right" @click="addCustomItem">Add a custom item</div>
     </div>
   </div>
 </template>
