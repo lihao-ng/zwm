@@ -277,3 +277,15 @@ body {
   width: 250px !important;
   height: auto !important;
 }
+
+.view {
+  color: $primary;
+}
+
+.edit {
+  color: $orange;
+}
+
+.remove {
+  color: $red;
+}

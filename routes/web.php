@@ -33,28 +33,13 @@ Route::prefix('admin')->name('admin.')->group(function(){
     Route::resource('merchants', 'Admin\MerchantsController');
     
     Route::resource('users', 'Admin\UsersController');
-  
-
-    // Route::get('teams/search', 'Admin\TeamsController@search')->name('admin.team.search');
-    // Route::post('teams/{team}', 'Admin\TeamsController@update')->name('admin.team.update');
-    // Route::resource('teams', 'Admin\TeamsController', ['as' => 'admin']);
-
-    // Route::resource('regions', 'Admin\RegionsController', ['as' => 'admin']);
-
-    // Route::resource('leagues', 'Admin\LeaguesController', ['as' => 'admin']);
-
-    // Route::post('statistics/{statistic}', 'Admin\StatisticsController@update')->name('admin.statistic.update');
-    // Route::resource('statistics', 'Admin\StatisticsController', ['as' => 'admin']);
 
     Route::get('logout', 'Admin\AuthController@logout')->name('logout');
   });
 });
 
-
-
 // Routes for Merchants
 
-// Route::get('profile/{player}', 'Client\PlayersController@getProfile')->name('player.profile');
 Route::middleware('guest')->group(function(){
   Route::get('login', 'Client\AuthController@showLogin')->name('login.show');
   Route::post('login', 'Client\AuthController@login')->name('login');
@@ -63,6 +48,7 @@ Route::middleware('guest')->group(function(){
   Route::get('register', 'Client\AuthController@showRegister')->name('register.show');
   Route::post('register', 'Client\AuthController@register')->name('register');
 });
+
 // Route::get('forgotpassword', 'Client\AuthController@forgotPassword')->name('forgot-pw');
 // Route::post('forgotpassword/token', 'Client\AuthController@passwordToken')->name('pw-store');
 // Route::get('resetpassword/{verficationToken}', 'Client\AuthController@resetPassword')->name('reset-pw');
@@ -70,6 +56,12 @@ Route::middleware('guest')->group(function(){
 
 Route::middleware('check.auth:merchant')->group(function(){
   Route::get('dashboard', 'Client\DashboardController@index')->name('dashboard');
+
+  Route::resource('accepting-items', 'Client\AcceptingItemsController')->parameters(['accepting_item' => 'acceptingItem']);
+
+  Route::resource('offers', 'Client\OffersController');
+
+  Route::resource('award-points', 'Client\AwardPointsController')->only(['index', 'store']);
 
   Route::get('logout', 'Client\AuthController@logout')->name('logout');
 });

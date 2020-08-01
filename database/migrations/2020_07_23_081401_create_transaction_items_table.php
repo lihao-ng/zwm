@@ -15,11 +15,10 @@ class CreateTransactionItemsTable extends Migration
     {
         Schema::create('transaction_items', function (Blueprint $table) {
             $table->id();
-            $table->string('transaction_id');
-            $table->string('offer_id');
-            $table->string('promocode_id')->nullable();
-            $table->string('quantity')->nullable();
-            $table->string('points')->nullable();
+            $table->integer('transaction_id');
+            $table->integer('offer_id');
+            $table->integer('quantity')->nullable();
+            $table->integer('points')->nullable();
             $table->timestamps();
         });
     }

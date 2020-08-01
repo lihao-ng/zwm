@@ -11,4 +11,12 @@ class Transaction extends Model {
     'type',
     'total_points'
   ]; 
+
+  public function transaction_items(){
+    return $this->hasMany('App\TransactionItem');
+  }
+
+  public function custom_items(){
+    return $this->hasMany('App\CustomItem');
+  }
 }

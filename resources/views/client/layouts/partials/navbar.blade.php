@@ -19,6 +19,27 @@
             Dashboard
           </a>
         </li>
+
+        <li class="nav-item mobile">
+          <a class="nav-link fs-18 {{ active_route('accepting-items') }}" href="{{ route('accepting-items.index') }}">
+            <i class="fal fa-trash"></i>
+            Accepting Items
+          </a>
+        </li>
+
+        <li class="nav-item mobile">
+          <a class="nav-link fs-18 {{ active_route('offers') }}" href="{{ route('offers.index') }}">
+            <i class="fal fa-ticket"></i>
+            Offers
+          </a>
+        </li>
+
+        <li class="nav-item mobile">
+          <a class="nav-link fs-18 {{ active_route('award-points') }}" href="{{ route('award-points.index') }}">
+            <i class="fal fa-calculator"></i>
+            Award Points
+          </a>
+        </li>
         
         <li class="nav-item mobile">
           <a class="nav-link fs-18" href="#">

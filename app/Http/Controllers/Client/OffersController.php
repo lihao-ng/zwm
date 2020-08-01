@@ -1,29 +1,28 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Client;
 
-use App\Guide;
-use App\Services\Admin\GuideServices;
+use App\Offer;
+use App\Services\Client\OfferServices;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class GuidesController extends Controller{
+class OffersController extends Controller{
 
 	/**
 	* The path to the "view" folder of this controller
 	*
 	* @var string
 	*/
-	public const PATH = 'admin.guide.';
+	public const PATH = 'client.offer.';
 
-	protected $guideServices;
+	protected $offerServices;
 
-	public function __construct(GuideServices $guideServices){
-		$this->guideServices = $guideServices;
-	}
-
-
+	public function __construct(OfferServices $offerServices){
+		$this->offerServices = $offerServices;
+  }
+  
   /**
    * Display a listing of the resource.
    *
@@ -31,7 +30,7 @@ class GuidesController extends Controller{
    */
   public function index(Request $request){
 		if ($request->wantsJson()) {
-      return $this->guideServices->index($request);
+      return $this->offerServices->index($request);
     }
 
 		return view(self::PATH . 'index');
@@ -42,7 +41,7 @@ class GuidesController extends Controller{
   }
 
   public function store(Request $request){
-    return $this->guideServices->create($request);  
+    return $this->offerServices->create($request);  
   }
 
   /**
@@ -51,8 +50,8 @@ class GuidesController extends Controller{
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function edit(Guide $guide){
-		return view(self::PATH . 'edit', ['guide' => (object) $this->guideServices->transform($guide)]);
+  public function edit(Offer $offer){
+		return view(self::PATH . 'edit', ['offer' => (object) $this->offerServices->transform($offer)]);
   }
 
   /**
@@ -62,8 +61,8 @@ class GuidesController extends Controller{
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function update(Request $request, Guide $guide){
-    return $this->guideServices->update($request, $guide);
+  public function update(Request $request, Offer $offer){
+    return $this->offerServices->update($request, $offer);
   }
 
   /**
@@ -72,8 +71,8 @@ class GuidesController extends Controller{
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function destroy(Guide $guide){
-    $guide->delete();
+  public function destroy(Offer $offer){
+    $offer->delete();
     
 		return success();
 	}
