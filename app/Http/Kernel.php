@@ -65,5 +65,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'check.auth' => \App\Http\Middleware\CheckAuth::class,
         'guide.auth' => \App\Http\Middleware\GuideAuth::class,
+        'passport.client.auth' => \App\Http\Middleware\PassportClientAuth::class,
     ];
 }
