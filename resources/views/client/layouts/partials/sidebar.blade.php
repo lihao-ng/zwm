@@ -17,7 +17,7 @@
       </li>
 
       <li class="sidebar-nav-item">
-				<a id="sidebar_offer_btn" class="sidebar-nav-link fs-18 {{ active_url('offers') }}" href="#offer_submenu1" data-toggle="collapse" data-target="#offer_submenu1" >
+				<a id="sidebar_offer_btn" class="sidebar-nav-link fs-18 {{ active_url('offers') }} {{ active_url('promo-codes') }}" href="#offer_submenu1" data-toggle="collapse" data-target="#offer_submenu1" >
 					<i class="fal fa-bars"></i>
 					Offers
 					<i id="sidebar_offer_btn_icon2" class="fal fa-angle-down text-right align-middle"></i>
@@ -26,13 +26,13 @@
 				<div class="collapse" id="offer_submenu1" aria-expanded="false">
 					<ul class="flex-column nav pl-3 pt-2">
 						<li class="py-2">
-							<a class="sidebar-nav-link fs-18" href="{{ route('offers.index') }}">
+							<a class="sidebar-nav-link fs-18 {{ active_url('offers') }}" href="{{ route('offers.index') }}">
 								<i class="fal fa-percent"></i>
 								Coupons
 							</a>
 						</li>
 						<li class="py-2">
-							<a class="sidebar-nav-link fs-18" href="{{ route('promo-codes.index') }}">
+							<a class="sidebar-nav-link fs-18 {{ active_url('promo-codes') }}" href="{{ route('promo-codes.index') }}">
 								<i class="fal fa-ticket"></i>
 									Promo codes
 							</a>

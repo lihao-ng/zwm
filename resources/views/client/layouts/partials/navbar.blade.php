@@ -14,34 +14,34 @@
     <div class="inner">
       <ul class="navbar-nav">
         <li class="nav-item mobile">
-          <a class="nav-link fs-18 {{ active_route('dashboard') }}" href="{{ route('dashboard') }}">
+          <a class="nav-link fs-18 {{ active_url('dashboard') }}" href="{{ route('dashboard') }}">
             <i class="fal fa-home-lg-alt"></i>
             Dashboard
           </a>
         </li>
 
         <li class="nav-item mobile">
-          <a class="nav-link fs-18 {{ active_route('accepting-items') }}" href="{{ route('accepting-items.index') }}">
+          <a class="nav-link fs-18 {{ active_url('accepting-items') }}" href="{{ route('accepting-items.index') }}">
             <i class="fal fa-trash"></i>
             Accepting Items
           </a>
         </li>
 
         <li class="nav-item mobile">
-          <a class="nav-link fs-18 {{ active_route('offers') }}" href="#offer_submenu1" data-toggle="collapse"  data-target="#offer_submenu1">
+          <a class="nav-link fs-18 {{ active_url('offers') }} {{ active_url('promo-codes') }}" href="#offer_submenu1" data-toggle="collapse"  data-target="#offer_submenu1">
             <i class="fal fa-bars"></i>
             Offers
           </a>
           <div class="collapse" id="offer_submenu1" aria-expanded="false">
             <ul class="flex-column nav pl-3 pt-2">
               <li class="py-2">
-                <a class="sidebar-nav-link fs-18 {{ active_route('offers') }}" href="{{ route('offers.index') }}">
+                <a class="sidebar-nav-link fs-18 {{ active_url('offers') }}" href="{{ route('offers.index') }}">
                   <i class="fal fa-percent"></i>
                   Coupons
                 </a>
               </li>
               <li class="py-2">
-                <a class="sidebar-nav-link fs-18 {{ active_route('promo-codes') }}" href="{{ route('promo-codes.index') }}">
+                <a class="sidebar-nav-link fs-18 {{ active_url('promo-codes') }}" href="{{ route('promo-codes.index') }}">
                   <i class="fal fa-ticket"></i>
                     Promo code
                 </a>
@@ -51,7 +51,7 @@
         </li>
 
         <li class="nav-item mobile">
-          <a class="nav-link fs-18 {{ active_route('award-points') }}" href="{{ route('award-points.index') }}">
+          <a class="nav-link fs-18 {{ active_url('award-points') }}" href="{{ route('award-points.index') }}">
             <i class="fal fa-calculator"></i>
             Award Points
           </a>
