@@ -53,8 +53,8 @@ class MerchantServices extends TransformerService{
     $merchant->description = $request->description;
     $merchant->contact = $request->contact;
     $merchant->address = $request->address;
-    // $merchant->lat = $request->lat;
-    // $merchant->lng = $request->lng;
+    $merchant->lat = $request->lat;
+    $merchant->lng = $request->lng;
     $merchant->business_hours = $request->business_hours;
     $merchant->link = $request->link;
     $merchant->other_information = $request->other_information;
@@ -76,7 +76,9 @@ class MerchantServices extends TransformerService{
       'description' => $merchant->description,
 			'category' => $merchant->category,
 			'contact' => $merchant->contact,
-			'address' => $merchant->address,
+      'address' => $merchant->address,
+      'lat' => $merchant->lat,
+      'lng' => $merchant->lng,
 			'business_hours' => $merchant->business_hours,
 			'link' => $merchant->link,
 			'other_information' => $merchant->other_information,

@@ -7,8 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Promocode extends Model {
   protected $fillable = [
     'offer_id',
+    'customer_id',
+    'transaction_item_id',
     'code',
-    'redeemed'
+    'qr_code',
+    'redeemed',
   ]; 
 
   public function transaction_item(){

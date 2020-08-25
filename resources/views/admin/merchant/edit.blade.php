@@ -49,12 +49,12 @@
               </div>
             </div>
 
-            <!-- change to vue later with autocomplete -->
             <div class="col-12 col-md-6 mb-3">
-              <div class="form-group has-label">
-                <label>Address</label>
-                {{ Form::text('address', null, ['id' => 'form-validation', 'class' => 'form-control', 'required' => 'true']) }}
-              </div>
+              <p class="tnc p-0 m-1">Address</p>
+              {{ Form::text('address', null, ['id' => 'autocomplete', 'class' => 'form-control', 'required' => 'true']) }}
+
+              {{ Form::hidden('lat', null,['id' => 'lat']) }}
+              {{ Form::hidden('lng', null,['id' => 'lng']) }}
             </div>
 
             <div class="col-12 col-md-6 mb-3">

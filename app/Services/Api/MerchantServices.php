@@ -22,7 +22,7 @@ class MerchantServices extends TransformerService {
     $query = $request->search ? $request->search : '';
     $category = $request->category;
     
-    $merchants = Merchant::where('name', 'like', "%{$query}%");
+    $merchants = Merchant::where('name', 'like', "%{$query}%")->where('approved', 1);
     
     if ($category) {
       $merchants->where('category', $category);
@@ -35,12 +35,8 @@ class MerchantServices extends TransformerService {
     return $merchants;
   }  
 
-  public function show(Merchant $merchant) {
-    return $this->transform($merchant);
-  }
-
 	public function transform($merchant) {
-    $merchant = (object) $merchant;
+    $merchant = Merchant::find($merchant['id']);
 
 		return [
 			'id' => $merchant->id,
@@ -56,5 +52,5 @@ class MerchantServices extends TransformerService {
       'other_information' => $merchant->other_information,
       'photo' => $this->imageLibraryService->fullPath($merchant->photo)
 		];
-	}
+  }
 }

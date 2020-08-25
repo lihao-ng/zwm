@@ -17,6 +17,7 @@ class CreatePromocodesTable extends Migration
             $table->id();
             $table->integer('offer_id');
             $table->integer('transaction_item_id')->nullable();
+            $table->integer('customer_id')->nullable();
             $table->string('code')->unique();
             $table->string('qr_code')->nullable();
             $table->timestamps();

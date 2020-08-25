@@ -74,6 +74,7 @@ class OfferServices extends TransformerService{
       $promocode = new Promocode();
       $promocode->offer_id = $offer->id;
       $promocode->code = $offer->prefix . $i;
+      $promocode->qr_code = $this->imageLibraryService->createQR($offer->prefix . $i, 'qrs/promocodes');
       $promocode->save();
     }
   }

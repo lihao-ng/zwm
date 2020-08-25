@@ -31,6 +31,7 @@ class AuthServices {
 			"gender" => "required",
 			"password" => "required|confirmed|min:6"
     ]);
+    
     $uniqueCode = $this->uniqueCode(7);
 
 		$user = new User();

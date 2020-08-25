@@ -42,7 +42,6 @@ Vue.component(
 // Vue.component('admin-player-form', require('../client/node_modules/@admin/Vue/Components/Player/PlayerFormComponent.vue').default);
 // Vue.component('admin-team-form', require('../client/node_modules/@admin/Vue/Components/Team/TeamFormComponent.vue').default);
 
-
 const app = new Vue({
 	el: '#vue__app__client'
 });
