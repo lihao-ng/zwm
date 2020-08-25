@@ -9,7 +9,7 @@
 @section('content')
   <h1 class="fs-30 lp-25 text-center">Register</h1>
 
-  <form method="post" action="{{ route('register') }}">
+  <form method="post" action="{{ route('register') }}" enctype="multipart/form-data">
     @csrf
 
     <div class="card p-3">
@@ -41,10 +41,12 @@
             <textarea name="description" maxlength="300" type="text" placeholder="Description" class="form-control" required>{{ old('description') }}</textarea>
           </div>
 
-          <!-- change to vue later with autocomplete -->
           <div class="col-12 col-md-6 mb-3">
             <p class="tnc p-0 m-1">Address</p>
-            <input name="address" maxlength="250" type="text" placeholder="Address" class="form-control" value="{{ old('address') }}">
+            <input name="address" id="autocomplete" maxlength="250" type="text" placeholder="Address" class="form-control" value="{{ old('address') }}" autocomplete="new-password">
+
+            <input name="lat" id="lat" type="hidden" value="{{ old('lat') }}">
+            <input name="lng" id="lng" type="hidden" value="{{ old('lng') }}">
           </div>
 
           <div class="col-12 col-md-6 mb-3">

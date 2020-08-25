@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Merchant;
+use App\Offer;
 
 use App\Services\Api\MerchantServices;
 use App\Services\Api\OfferServices;
@@ -10,7 +10,7 @@ use App\Services\Api\OfferServices;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class MerchantsController extends Controller{
+class OffersController extends Controller{
 	protected $merchantServices;
 	protected $offerServices;
 
@@ -20,15 +20,15 @@ class MerchantsController extends Controller{
 	}
 
 	public function index(Request $request) {
-		return $this->merchantServices->index($request);
+		return $this->offerServices->index($request);
   }
   
-  public function show(Request $request, Merchant $merchant) {
-    $offers = $this->offerServices->transformCollection($merchant->offers);
-    $merchant = $this->merchantServices->transform($merchant);
+  public function show(Request $request, Offer $offer) {
+    $merchant = $this->merchantServices->transform($offer->merchant);
+    $offer = $this->offerServices->transform($offer);
     
-    $merchant['offers'] = $offers;
+    $merchant['merchant'] = $merchant;
 
     return $merchant;
-	}
+  }
 }

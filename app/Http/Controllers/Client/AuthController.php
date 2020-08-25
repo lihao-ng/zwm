@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Client;
 use App\User;
 use App\Merchant;
 
+use App\Services\ImageLibraryService;
+
 use Auth;
 use Carbon\Carbon;
 
@@ -17,7 +19,12 @@ use Session;
 
 
 class AuthController extends Controller {
+  protected $imageLibraryService;
   protected $path = 'client.auth.';
+
+  function __construct(ImageLibraryService $imageLibraryService) {
+    $this->imageLibraryService = $imageLibraryService;
+  }
 
 	public function showRegister(){
 		return view($this->path . 'register');
@@ -56,7 +63,9 @@ class AuthController extends Controller {
 			'category' => 'required',
 			'name' => 'required',
 			'description' => 'required',
-			'address' => 'required',
+      'address' => 'required',
+      'lat' => 'required',
+      'lng' => 'required',
 			'hours' => 'required',
       'contact' => 'required',
       'link' => 'required',
@@ -85,8 +94,9 @@ class AuthController extends Controller {
     $merchant->other_information = $request->feedback;
     $merchant->approved = 0;
 
-    // Upload file
+    $photoName = $this->imageLibraryService->create($request->file('photo'), 'merchants');
 
+    $merchant->photo = $photoName;
     $merchant->save();
 
 		Session::flash('success','Registration successful! Your account will be verified by the admin in 3 to 5 working days.');

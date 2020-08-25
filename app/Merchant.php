@@ -21,7 +21,11 @@ class Merchant extends Model {
     'approved'
   ]; 
 
-  public function user(){
+  public function user() {
     return $this->belongsTo('App\User');
+  }
+
+  public function offers() {
+    return $this->hasMany('App\Offer');
   }
 }
