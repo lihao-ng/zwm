@@ -4,6 +4,8 @@ namespace App\Services\Admin;
 
 use App\Merchant;
 
+use App\Imports\MerchantsImport;
+use Excel;
 use Illuminate\Http\Request;
 use App\Services\TransformerService;
 use App\Services\ImageLibraryService;
@@ -66,6 +68,17 @@ class MerchantServices extends TransformerService{
     $merchant->save();
 
 		return redirect()->route('admin.merchants.index');
+  }
+
+  public function import(Request $request) {
+    $request->validate([
+			'file' => 'required|file'
+    ]);
+    
+    Excel::import(new MerchantsImport($this->imageLibraryService), $request->file('file'));
+    // (new MerchantsImport($this->imageLibraryService))->queue($request->file('file'));
+    
+    return redirect()->back()->with('success', 'Great! Please refresh after a few seconds if you do not see the changes.');
   }
 
 	public function transform($merchant){

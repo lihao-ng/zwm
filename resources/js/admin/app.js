@@ -41,5 +41,8 @@ $(function () {
     // format: 'DD-MM-YYYY',
     format: 'YYYY-MM-DD',
   });
-
+  $('.on_file_import').on('change', function (e) {
+    var form = $($(this).data('target'));
+    form.submit();
+  });
 });

@@ -9,12 +9,14 @@ use App\OauthRefreshToken;
 
 use App\Services\ImageLibraryService;
 
+use Carbon\Carbon;
 use Closure;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class AuthServices {
   protected $imageLibraryService;
@@ -24,13 +26,17 @@ class AuthServices {
   }
 
 	public function register(Request $request) {
-    $request->validate([
-      "email" => "required|email|unique:users",
+    $validator = Validator::make($request->all(), [
 			"first_name" => "required",
 			"last_name" => "required",
+      "email" => "required|email|unique:users",
 			"gender" => "required",
 			"password" => "required|confirmed|min:6"
     ]);
+
+    if ($validator->fails()) {
+      return validation_error($validator->errors()->first()); 
+    }
     
     $uniqueCode = $this->uniqueCode(7);
 
@@ -59,11 +65,15 @@ class AuthServices {
   }
 
 	public function login(Request $request) {
-    $request->validate([
+    $validator = Validator::make($request->all(), [
       "email" => "required|email",
       "password" => "required"
     ]);
 
+    if ($validator->fails()) {
+      return validation_error($validator->errors()->first()); 
+    }
+    
 		if(Auth::attempt(['email' => $request->email, 'password' => $request->password, 'role_id' => 3])) {
 			return $this->createToken($request, Auth::user());
 		}else{
@@ -80,7 +90,7 @@ class AuthServices {
       
       $refreshToken->revoked = 1;
       $refreshToken->save();
-		}
+    }
 
 		$response = $this->generateOauthRequest($request, $user);
 		$responseBody = json_decode($response->getBody());
@@ -115,7 +125,7 @@ class AuthServices {
 		$response = $http->post(url('oauth/token'), [
 			'verify' => false,
 			'form_params' => $form_params,
-		]);
+    ]);
 			
 		return $response;
 	}
@@ -126,10 +136,15 @@ class AuthServices {
 
 	public function transform($response, $user) {
 		return [
-			'access_token' => $response->access_token,
+      'access_token' => $response->access_token,
+      'expires_at' => Carbon::now()->addSeconds($response->expires_in)->format('Y-m-d h:i:s'),
 			'user_id' => $user->id,
 			'first_name' => $user->first_name,
-			'last_name' => $user->last_name
+      'last_name' => $user->last_name,
+      'total_points' => $user->customer->total_points,
+      'current_points' => $user->customer->current_points,
+      'code' => $user->customer->code,
+      'qr_code' => $this->imageLibraryService->fullPath($user->customer->qr_code),
 		];
 	}
 }

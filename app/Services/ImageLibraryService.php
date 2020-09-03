@@ -20,6 +20,15 @@ class ImageLibraryService {
     return $path . '/' . $fileName;
   }
 
+  public function createFromUrl($url, $path) {
+    $content = file_get_contents($url);
+    $fileName = Carbon::now()->timestamp . mt_rand() . '.jpeg'; 
+
+    Storage::disk('public')->put($path . '/' . $fileName, $content);
+    
+    return $path . '/' . $fileName;
+  }
+
   public function update($file, $imageName, $path) {
     if(!$file){
       return $imageName;

@@ -56,6 +56,11 @@ class MerchantsController extends Controller{
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
+
+   public function show(Merchant $merchant){
+     # code...
+   }
+
   public function update(Request $request, Merchant $merchant){
     return $this->merchantServices->update($request, $merchant);
 		// $imageFile = $request->image;
@@ -147,5 +152,9 @@ class MerchantsController extends Controller{
     $merchant->delete();
     
 		return success();
-	}
+  }
+
+  public function import(Request $request) {
+    return $this->merchantServices->import($request);
+  }
 }
