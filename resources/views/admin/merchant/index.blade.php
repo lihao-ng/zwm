@@ -7,13 +7,20 @@
 @section('content')
   <div class="card bootstrap-table">
     <div class="card-body table-full-width">
-      <div class="toolbar d-flex mb-3">
-        <a href="{{ route('admin.merchants.create') }}" class="ml-auto btn btn-primary">
+      <div class="toolbar d-flex mb-3 flex-row-reverse">
+        {{-- <a href="{{ route('admin.merchants.create') }}" class="ml-auto btn btn-primary">
           Create
-        </a>
-        {{-- <a href="{{ route('admin.promotion-codes.export') }}" class="ml-2 btn btn-primary">
-          Export
         </a> --}}
+
+        {!! Form::open(['route' => 'admin.merchants.import', 'enctype' => 'multipart/form-data', 'class' => 'd-inline-block import_form',
+              'id' => 'form']) !!}
+              <label for="file">
+                <span class="ml-auto btn btn-primary" >
+                  Import
+                </span>
+                <input type="file" id="file" class="on_file_import" name="file" style="display:none" data-target=".import_form">
+              </label>
+            {!! Form::close() !!} 
       </div>
       <div class="table-responsive-sm custom-table">
         <table id="bootstrap-table" class="table" data-url="{{ route('admin.merchants.index') }}">

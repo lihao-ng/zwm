@@ -22,12 +22,12 @@ class AcceptingItemServices extends TransformerService{
 		$offset = $request->offset ? $request->offset : 0;
 		$query = $request->search ? $request->search : '';
     $ids = $request->ids ? json_decode($request->ids) : [];
-
-		$acceptingItems = AcceptingItem::whereNotIn('id', $ids)->where('merchant_id', current_user()->id)->where('type', 'Accepting Items')->where('name', 'like', "%{$query}%")->orderBy($sort, $order);
+    
+		$acceptingItems = AcceptingItem::whereNotIn('id', $ids)->where('merchant_id', current_user()->merchant->id)->where('type', 'Accepting Items')->where('name', 'like', "%{$query}%")->orderBy($sort, $order);
 		$listCount = $acceptingItems->count();
 
 		$acceptingItems = $acceptingItems->limit($limit)->offset($offset)->get();
-
+    
 		return respond(['rows' => $this->transformCollection($acceptingItems), 'total' => $listCount]);
   }
 

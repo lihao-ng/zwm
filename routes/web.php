@@ -30,6 +30,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
 
     Route::resource('guides', 'Admin\GuidesController');
         
+    Route::post('merchants/import', 'Admin\MerchantsController@import')->name('merchants.import');
     Route::resource('merchants', 'Admin\MerchantsController');
     
     Route::resource('users', 'Admin\UsersController');

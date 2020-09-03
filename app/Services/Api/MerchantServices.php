@@ -18,11 +18,13 @@ class MerchantServices extends TransformerService {
   }
 
 	public function index(Request $request) {
+		$sort = $request->sort ? $request->sort : 'created_at';
+		$order = $request->order ? $request->order : 'desc';
 		$limit = $request->limit ? $request->limit : 10;
     $query = $request->search ? $request->search : '';
     $category = $request->category;
     
-    $merchants = Merchant::where('name', 'like', "%{$query}%")->where('approved', 1);
+    $merchants = Merchant::where('name', 'like', "%{$query}%")->where('approved', 1)->orderBy($sort, $order);
     
     if ($category) {
       $merchants->where('category', $category);

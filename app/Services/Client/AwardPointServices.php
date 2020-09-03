@@ -46,6 +46,10 @@ class AwardPointServices extends TransformerService{
 
     $transaction = $this->createTransactionItems($transaction, json_decode($request->products));
     $transaction = $this->createCustomItems($transaction, json_decode($request->custom_items));
+    
+    $customer->total_points += $transaction->total_points;
+    $customer->current_points += $transaction->total_points;
+    $customer->save();
 
 		return success();
   }
@@ -66,7 +70,7 @@ class AwardPointServices extends TransformerService{
 
     $transaction->total_points += $totalPoints;
     $transaction->save();
-
+    
     return $transaction;
   }
 

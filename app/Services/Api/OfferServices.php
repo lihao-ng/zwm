@@ -18,11 +18,15 @@ class OfferServices extends TransformerService {
   }
 
 	public function index(Request $request) {
+		$sort = $request->sort ? $request->sort : 'created_at';
+		$order = $request->order ? $request->order : 'desc';
 		$limit = $request->limit ? $request->limit : 10;
     $query = $request->search ? $request->search : '';
     $type = $request->type;
+
+    // whereDate('inspection_date', '<=', Carbon::today())
     
-    $offers = Offer::where('name', 'like', "%{$query}%");
+    $offers = Offer::where('name', 'like', "%{$query}%")->orderBy($sort, $order);
     
     if ($type) {
       $offers->where('type', $type);

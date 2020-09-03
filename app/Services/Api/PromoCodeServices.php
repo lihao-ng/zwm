@@ -8,8 +8,8 @@ use App\PromoCode;
 
 use App\Services\ImageLibraryService;
 use App\Services\TransformerService;
-
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class PromoCodeServices extends TransformerService {
   protected $imageLibraryService;
@@ -19,9 +19,13 @@ class PromoCodeServices extends TransformerService {
   }
 
   public function redeem(Request $request) {
-    $request->validate([
+    $validator = Validator::make($request->all(), [
       "offer_id" => "required",
     ]);
+
+    if ($validator->fails()) {
+      return validation_error($validator->errors()->first()); 
+    }
 
     $customer = current_user()->customer;
     $offer = Offer::find($request->offer_id);
