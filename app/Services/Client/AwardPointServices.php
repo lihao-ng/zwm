@@ -30,11 +30,14 @@ class AwardPointServices extends TransformerService{
   public function create(Request $request){
     $request->validate([ 
       'unique_code' => 'required',
-      'products' => 'required',
-      'custom_items' => 'required'
+      'products' => 'required'
     ]);
     
     $customer = Customer::where('code', $request->unique_code)->first();
+    
+    if(!$customer) {
+      return validation_error('Not a valid user code.');
+    }
 
     $transaction = new Transaction();
     $transaction->customer_id = $customer->id;

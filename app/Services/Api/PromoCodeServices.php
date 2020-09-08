@@ -39,8 +39,10 @@ class PromoCodeServices extends TransformerService {
 
     $validPromoCode = PromoCode::where('offer_id', $offer->id)->where('customer_id', null)->first();
     $validPromoCode->customer_id = $customer->id;
+    $validPromoCode->qr_code = $this->imageLibraryService->createQR($validPromoCode->code, 'qrs/promocodes');
+  
     $validPromoCode->save();
-
+    
     return $this->transform($validPromoCode);
   }
 

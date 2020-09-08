@@ -24,7 +24,8 @@ Route::middleware('passport.client.auth')->group(function () {
     
     // ROUTES FOR MERCHANTS
     
-    Route::get('merchants', 'Api\MerchantsController@index');
+    Route::post('merchants/nearby', 'Api\MerchantsController@nearby');
+    Route::post('merchants', 'Api\MerchantsController@index');
     Route::get('merchants/{merchant}', 'Api\MerchantsController@show');
 
     // ROUTES FOR OFFERS

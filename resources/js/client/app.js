@@ -19,6 +19,7 @@ Vue.use(VueQrcodeReader);
 //   require('../client/node_modules/@admin/Vue/Components/Test.vue').default
 // );
 
+// Components for awarding points
 Vue.component(
 	'dashboard-component',
 	require('@client/Vue/Components/DashboardComponents/DashboardComponent.vue').default
@@ -30,15 +31,26 @@ Vue.component(
 );
  
 Vue.component(
-	'user-account-componenent',
+	'user-account-component',
 	require('@client/Vue/Components/AwardPointsComponents/partials/UserAccountComponent.vue').default
 );
 
 Vue.component(
-	'award-item-componenent',
+	'award-item-component',
 	require('@client/Vue/Components/AwardPointsComponents/partials/AwardItemComponent.vue').default
 );
 
+// Components for redemption
+Vue.component(
+	'redemption-component',
+	require('@client/Vue/Components/RedemptionComponents/RedemptionComponent.vue').default
+);
+
+Vue.component(
+	'qr-code-component',
+	require('@client/Vue/Components/RedemptionComponents/partials/QrCodeComponent.vue').default
+);
+ 
 // Vue.component('admin-player-form', require('../client/node_modules/@admin/Vue/Components/Player/PlayerFormComponent.vue').default);
 // Vue.component('admin-team-form', require('../client/node_modules/@admin/Vue/Components/Team/TeamFormComponent.vue').default);
 

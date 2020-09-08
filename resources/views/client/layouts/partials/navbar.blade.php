@@ -46,6 +46,13 @@
                     Promo code
                 </a>
               </li>
+
+              <li class="py-2">
+                <a class="sidebar-nav-link fs-18 {{ active_url('redemption') }}" href="{{ route('promo-codes.redemption.show') }}">
+                  <i class="fal fa-ticket"></i>
+                    Redemption
+                </a>
+              </li>
             </ul>
           </div> 
         </li>

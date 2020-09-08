@@ -25,7 +25,12 @@ class PromoCodeServices extends TransformerService{
 
     $promoCodes = PromoCode::whereHas('offer', function($q) use ($query){
       $q->where('merchant_id', current_user()->merchant->id);
-    })->where('code', 'like', "%{$query}%");    
+    })->where('code', 'like', "%{$query}%");
+    
+    if($request->approved) {
+      $promoCodes = $promoCodes->where('used', 0);
+    }
+    
 		$listCount = $promoCodes->count();
 
 		$promoCodes = $promoCodes->limit($limit)->offset($offset)->get();
@@ -47,7 +52,7 @@ class PromoCodeServices extends TransformerService{
       $promocode = new Promocode();
       $promocode->offer_id = $offer->id;
       $promocode->code = $offer->prefix . $i;
-      $promocode->qr_code = $this->imageLibraryService->createQR($offer->prefix . $i, 'qrs/promocodes');
+      // $promocode->qr_code = $this->imageLibraryService->createQR($offer->prefix . $i, 'qrs/promocodes');
       $promocode->save();
     }
 
@@ -57,11 +62,31 @@ class PromoCodeServices extends TransformerService{
 		return redirect()->route('promo-codes.index');
   }
 
+  public function redemption(Request $request){
+    $request->validate([
+			'code' => 'required'
+    ]);
+    
+    $validPromoCode = Promocode::where('code', $request->code)->where('used', 0)->first();
+    
+    if(!$validPromoCode) {
+      return validation_error('Promo Code is not valid.');
+    }
+
+    $validPromoCode->used = 1;
+    $validPromoCode->save();
+    
+    return $this->transform($validPromoCode);
+  }
+
 	public function transform($promoCode){
 		return [
 			'id' => $promoCode->id,
       'coupon_name' => $promoCode->offer->name,
+      'description' => $promoCode->offer->description,
+      'points' => $promoCode->offer->points,
       'code' => $promoCode->code,
+      'photo' => $this->imageLibraryService->fullPath($promoCode->offer->photo),
       'redeemed' => $promoCode->transaction_item ? 'Yes' : 'No'
 		];
 	}
