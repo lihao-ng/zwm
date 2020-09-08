@@ -38,13 +38,17 @@ class PromoCodesController extends Controller{
   }
 
   public function create(Request $request){
-    $offers = Offer::where('merchant_id', current_user()->id)->where('type', 'Promo')->pluck('name', 'id');
+    $offers = Offer::where('merchant_id', current_user()->merchant->id)->where('type', 'Promo')->pluck('name', 'id');
 
 		return view(self::PATH . 'create', ['offers' => $offers]);
   }
 
   public function store(Request $request){
     return $this->promoCodeServices->create($request);  
+  }
+
+  public function show(PromoCode $promoCode){
+    
   }
 
   /**
@@ -81,12 +85,20 @@ class PromoCodesController extends Controller{
   }
   
   public function showGenerate(Request $request){
-    $offers = Offer::where('merchant_id', current_user()->id)->where('type', 'Promo')->pluck('name', 'id');
+    $offers = Offer::where('merchant_id', current_user()->merchant->id)->where('type', 'Promo')->pluck('name', 'id');
 
 		return view(self::PATH . 'generate', ['offers' => $offers]);
   }
 
   public function generate(Request $request){
     return $this->promoCodeServices->generate($request);
+  }
+
+  public function showRedemption(Request $request){
+		return view(self::PATH . 'redemption');
+  }
+
+  public function redemption(Request $request){
+    return $this->promoCodeServices->redemption($request);
   }
 }

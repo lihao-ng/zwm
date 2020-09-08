@@ -1,8 +1,8 @@
 export default{
-  getProducts(query, onSuccess, onError){
+  getCodes(query, onSuccess, onError){
     query = this.createQuery(query);
     
-		axios.get(`/accepting-items${query}`)
+		axios.get(`/promo-codes${query}`)
 		.then(({data}) => {
 			if (onSuccess) {
 				onSuccess(data);
@@ -11,9 +11,9 @@ export default{
 			this.handleErrorResponse(response, onError);
 		});
   },
-  awardPoints(data, onSuccess, onError){ 
-		axios.post(`/award-points`, data) 
-		.then(({data}) => { 
+  redeem(data, onSuccess, onError){ 
+		axios.post(`/redemption`, data) 
+		.then(({data}) => {
 			if (onSuccess) {
 				onSuccess(data);
 			}

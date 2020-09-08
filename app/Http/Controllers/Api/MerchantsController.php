@@ -30,5 +30,9 @@ class MerchantsController extends Controller{
     $merchant['offers'] = $offers;
 
     return $merchant;
-	}
+  }
+  
+  public function nearby(Request $request) {
+		return $this->merchantServices->nearby($request);
+  }
 }

@@ -22,8 +22,8 @@ class OfferServices extends TransformerService{
 		$limit = $request->limit ? $request->limit : 10;
 		$offset = $request->offset ? $request->offset : 0;
 		$query = $request->search ? $request->search : '';
-
-		$offers = Offer::where('merchant_id', current_user()->id)->where('type', 'Promo')->where('name', 'like', "%{$query}%")->orderBy($sort, $order);
+   
+		$offers = Offer::where('merchant_id', current_user()->merchant->id)->where('type', 'Promo')->where('name', 'like', "%{$query}%")->orderBy($sort, $order);
 		$listCount = $offers->count();
 
 		$offers = $offers->limit($limit)->offset($offset)->get();
@@ -74,7 +74,7 @@ class OfferServices extends TransformerService{
       $promocode = new Promocode();
       $promocode->offer_id = $offer->id;
       $promocode->code = $offer->prefix . $i;
-      $promocode->qr_code = $this->imageLibraryService->createQR($offer->prefix . $i, 'qrs/promocodes');
+      // $promocode->qr_code = $this->imageLibraryService->createQR($offer->prefix . $i, 'qrs/promocodes');
       $promocode->save();
     }
   }

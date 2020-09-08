@@ -16,9 +16,9 @@
               </div>
 
               <div class="row">
-                <user-account-componenent ref="account"></user-account-componenent>
+                <user-account-component ref="account"></user-account-component>
 
-                <award-item-componenent ref="item"></award-item-componenent>
+                <award-item-component ref="item"></award-item-component>
 
                 <div class="col text-right my-2">
                   <button type="submit" value="Submit" class="btn btn-primary" @click="onSubmit()">Award Points</button>
@@ -28,32 +28,6 @@
           </div>
         </div>
       </div>
-
-      <!--
-      <div class="card-body">
-        <user-account-componenent></user-account-componenent>
-
-        <sale-customer-component ref="customer" @newCustomer="onNewCustomer()" v-if="!newCustomer"></sale-customer-component>
-
-        <sale-new-customer-component ref="newCustomer" v-else></sale-new-customer-component>
-
-        <sale-product-component ref="product"></sale-product-component>
-
-        <sale-outlet-component ref="outlet"></sale-outlet-component> 
-        
-        <div class="custom-file">
-          <input type="file" class="custom-file-input" id="customFile" @change="receiptUpload()">
-          <label class="custom-file-label" for="customFile">{{ receiptLabel }}</label>
-        </div>
-
-        <div class="card-category form-category"><label class="label">*</label> Required fields</div>
-      </div>
-
-      <div class="card-footer mt-3 text-right">
-        <button type="submit" class="btn btn-warning btn-wd" @click="onSubmit()">Create</button>
-      </div>
-
--->
     </div>
   </form>
 </template>
@@ -88,7 +62,8 @@
           // window.location.href = data;
           console.log(data, 'ok');
         }, (error) => {
-          this.error = error[Object.keys(error)[0]][0];
+          console.log(error);
+          this.error = error;
         });
       },
       validateAccount: function(uniqueCode) {
