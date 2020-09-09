@@ -2,7 +2,6 @@
 
 namespace App\Services\Api;
 
-use App\User;
 use App\Guide;
 
 use App\Services\ImageLibraryService;

@@ -58,6 +58,30 @@
         </li>
 
         <li class="nav-item mobile">
+          <a class="nav-link fs-18 {{ active_url('categories') }} {{ active_url('products') }}" href="#offer_submenu2" data-toggle="collapse"  data-target="#offer_submenu2">
+            <i class="fal fa-shopping-bag"></i>
+            Goods
+          </a>
+          <div class="collapse" id="offer_submenu2" aria-expanded="false">
+            <ul class="flex-column nav pl-3 pt-2">
+              <li class="py-2">
+                <a class="sidebar-nav-link fs-18 {{ active_url('categories') }}" href="{{ route('categories.index') }}">
+                  <i class="fal fa-sitemap"></i>
+                    Categories
+                </a>
+              </li>
+
+              <li class="py-2">
+                <a class="sidebar-nav-link fs-18 {{ active_url('products') }}" href="{{ route('products.index') }}">
+                  <i class="fal fa-shopping-basket"></i>
+                    Products
+                </a>
+              </li>
+            </ul>
+          </div> 
+        </li>
+
+        <li class="nav-item mobile">
           <a class="nav-link fs-18 {{ active_url('award-points') }}" href="{{ route('award-points.index') }}">
             <i class="fal fa-calculator"></i>
             Award Points

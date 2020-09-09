@@ -48,13 +48,16 @@ class AwardPointServices extends TransformerService{
     $transaction->save();
 
     $transaction = $this->createTransactionItems($transaction, json_decode($request->products));
-    $transaction = $this->createCustomItems($transaction, json_decode($request->custom_items));
+
+    if($request->custom_items) {
+      $transaction = $this->createCustomItems($transaction, json_decode($request->custom_items));
+    }
     
     $customer->total_points += $transaction->total_points;
     $customer->current_points += $transaction->total_points;
     $customer->save();
 
-		return success();
+		return route('award-points.index');
   }
 
   public function createTransactionItems($transaction, $products){
