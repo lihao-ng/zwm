@@ -11,7 +11,7 @@
 			<li class="sidebar-nav-item">
         <a class="sidebar-nav-link fs-18  {{ active_url('accepting-items') }}"
           href="{{ route('accepting-items.index') }}">
-          <i class="fal fa-trash"></i>
+          <i class="fal fa-recycle"></i>
           Accepting Items
         </a>
       </li>
@@ -27,13 +27,13 @@
 					<ul class="flex-column nav pl-3 pt-2">
 						<li class="py-2">
 							<a class="sidebar-nav-link fs-18 {{ active_url('offers') }}" href="{{ route('offers.index') }}">
-								<i class="fal fa-percent"></i>
+								<i class="fal fa-gift"></i>
 								Coupons
 							</a>
 						</li>
 						<li class="py-2">
 							<a class="sidebar-nav-link fs-18 {{ active_url('promo-codes') }}" href="{{ route('promo-codes.index') }}">
-								<i class="fal fa-ticket"></i>
+								<i class="fal fa-percent"></i>
 									Promo codes
 							</a>
 						</li>
@@ -42,6 +42,32 @@
 							<a class="sidebar-nav-link fs-18 {{ active_url('redemption') }}" href="{{ route('promo-codes.redemption.show') }}">
 								<i class="fal fa-ticket"></i>
 									Redemption
+							</a>
+						</li>
+					</ul>
+				</div> 
+			</li>
+
+      <li class="sidebar-nav-item">
+				<a id="sidebar_offer_btn" class="sidebar-nav-link fs-18 {{ active_url('categories') }} {{ active_url('products') }}" href="#offer_submenu2" data-toggle="collapse" data-target="#offer_submenu2" >
+					<i class="fal fa-shopping-bag"></i>
+					Goods
+					<i id="sidebar_offer_btn_icon2" class="fal fa-angle-down text-right align-middle"></i>
+				</a>
+
+				<div class="collapse" id="offer_submenu2" aria-expanded="false">
+					<ul class="flex-column nav pl-3 pt-2">
+						<li class="py-2">
+							<a class="sidebar-nav-link fs-18 {{ active_url('categories') }}" href="{{ route('categories.index') }}">
+								<i class="fal fa-sitemap"></i>
+								Categories
+							</a>
+						</li>
+
+						<li class="py-2">
+							<a class="sidebar-nav-link fs-18 {{ active_url('products') }}" href="{{ route('products.index') }}">
+								<i class="fal fa-shopping-basket"></i>
+									Products
 							</a>
 						</li>
 					</ul>

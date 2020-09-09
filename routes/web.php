@@ -66,9 +66,15 @@ Route::middleware('check.auth:merchant')->group(function(){
 
   Route::get('redemption', 'Client\PromoCodesController@showRedemption')->name('promo-codes.redemption.show');
   Route::post('redemption', 'Client\PromoCodesController@redemption')->name('promo-codes.redemption');
+  
   Route::get('promo-codes/generate', 'Client\PromoCodesController@showGenerate')->name('promo-codes.generate.show');
   Route::post('promo-codes/generate', 'Client\PromoCodesController@generate')->name('promo-codes.generate');
+  
   Route::resource('promo-codes', 'Client\PromoCodesController');
+
+  Route::resource('categories', 'Client\CategoriesController');
+
+  Route::resource('products', 'Client\ProductsController');
 
   Route::get('logout', 'Client\AuthController@logout')->name('logout');
 });
