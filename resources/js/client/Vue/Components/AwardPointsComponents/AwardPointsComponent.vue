@@ -47,10 +47,9 @@
         let item = this.$refs.item;
         
         let formData = new FormData();
-        let validateAccount = this.validateAccount(account.uniqueCode);
         let validateItems = this.validateItems(item);
         
-        if(!validateAccount || !validateItems) {
+        if(!validateItems) {
           return;
         }
 
@@ -59,22 +58,17 @@
         formData = this.appendProducts('custom_items', item.customItems, formData);
 
         AwardPointServices.awardPoints(formData, (data) => {
-          // window.location.href = data;
-          console.log(data, 'ok');
+          swal({
+            title: 'Successfully awarded!',
+            type: 'success',
+            confirmButtonText: 'OK',
+          }, function () {
+            window.location.href = data;
+          });
         }, (error) => {
           console.log(error);
           this.error = error;
         });
-      },
-      validateAccount: function(uniqueCode) {
-        // Send request to check for uniqueCode validity
-
-        // if(invalidProduct) {
-        //   this.error = `${invalidProduct.name} does not have any quantity.`;
-        //   return false;
-        // }
-
-        return true;
       },
       validateItems: function(item) {
         console.log(item);

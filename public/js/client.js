@@ -1957,10 +1957,9 @@ __webpack_require__.r(__webpack_exports__);
       var account = this.$refs.account;
       var item = this.$refs.item;
       var formData = new FormData();
-      var validateAccount = this.validateAccount(account.uniqueCode);
       var validateItems = this.validateItems(item);
 
-      if (!validateAccount || !validateItems) {
+      if (!validateItems) {
         return;
       }
 
@@ -1968,20 +1967,17 @@ __webpack_require__.r(__webpack_exports__);
       formData = this.appendProducts('products', item.products, formData);
       formData = this.appendProducts('custom_items', item.customItems, formData);
       _services_AwardPointServices__WEBPACK_IMPORTED_MODULE_0__["default"].awardPoints(formData, function (data) {
-        // window.location.href = data;
-        console.log(data, 'ok');
+        swal({
+          title: 'Successfully awarded!',
+          type: 'success',
+          confirmButtonText: 'OK'
+        }, function () {
+          window.location.href = data;
+        });
       }, function (error) {
         console.log(error);
         _this.error = error;
       });
-    },
-    validateAccount: function validateAccount(uniqueCode) {
-      // Send request to check for uniqueCode validity
-      // if(invalidProduct) {
-      //   this.error = `${invalidProduct.name} does not have any quantity.`;
-      //   return false;
-      // }
-      return true;
     },
     validateItems: function validateItems(item) {
       console.log(item);
@@ -2528,6 +2524,8 @@ __webpack_require__.r(__webpack_exports__);
           html: "<div class='card mb-3' style='max-width: 540px;'>" + "<div class='row no-gutters'>" + "<div class='col-md-4'>" + "<img style='height:150px;object-fit:fill;' src='" + data.photo + "' class='card-img'>" + "</div>" + "<div class='col-md-8'>" + "<div class='card-body'>" + "<h5 class='card-title'>" + data.coupon_name + "</h5>" + "<p class='card-text'>" + data.description + "</p>" + "<p class='card-text'><small class='text-muted'>" + data.points + " points</small></p>" + "</div>" + "</div>" + "</div>" + "</div>",
           allowOutsideClick: false,
           confirmButtonText: "OK"
+        }, function () {
+          location.reload();
         });
       }, function (error) {
         _this.error = error;
@@ -73085,8 +73083,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   handleErrorResponse: function handleErrorResponse(response, onError) {
     if (response.status === 422) {
-      console.log('err', response.data);
-
       if (!response.data.hasOwnProperty('errors')) {
         onError(response.data.message);
       } else {

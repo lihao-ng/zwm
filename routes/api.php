@@ -28,6 +28,11 @@ Route::middleware('passport.client.auth')->group(function () {
     Route::post('merchants', 'Api\MerchantsController@index');
     Route::get('merchants/{merchant}', 'Api\MerchantsController@show');
 
+    // ROUTES FOR MERCHANT'S PRODUCTS AND CATEGORIES
+
+    Route::get('products/search', 'Api\ProductsController@search');
+    Route::get('products/{merchant}', 'Api\ProductsController@index');
+
     // ROUTES FOR OFFERS
 
     Route::get('offers', 'Api\OffersController@index');

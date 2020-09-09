@@ -39,6 +39,16 @@ class OfferServices extends TransformerService {
     return $offers;
   }  
 
+  public function getAllOffers($type) {
+    $offers = Offer::where('type', $type)->get();
+
+    if(!$offers) {
+      return false;
+    }
+
+    return $this->transformCollection($offers);
+  }
+
   public function transform($offer) {
     $offer = Offer::find($offer['id']);
 

@@ -63,6 +63,8 @@
                 "</div>",
               allowOutsideClick: false,
               confirmButtonText: "OK",
+            }, function () {
+              location.reload();
             });
         }, (error) => {
           this.error = error;
