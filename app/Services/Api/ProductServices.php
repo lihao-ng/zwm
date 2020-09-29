@@ -22,6 +22,7 @@ class ProductServices extends TransformerService {
 	public function index(Request $request, Merchant $merchant) {
     $merchantCategories = Category::where('merchant_id', $merchant->id)->get();
 
+    $offers = [];
     $categories = [];
     $products = [];
     
@@ -31,22 +32,23 @@ class ProductServices extends TransformerService {
     }
 
     $offerServices = new OfferServices($this->imageLibraryService);
-    $offers = $offerServices->getAllOffers('Accepting Items');
+    $acceptingItems = $offerServices->getAllOffers('Accepting Items', $merchant->id);
 
-    if($offers) {
+    if($acceptingItems) {
       array_unshift($categories, 'Accepting Items');
-      array_unshift($products, $offers);
+      array_push($offers, $acceptingItems);
     }
 
-    $offers = $offerServices->getAllOffers('Promo');
+    $promos = $offerServices->getAllOffers('Promo', $merchant->id);
     
-    if($offers) {
+    if($promos) {
       array_unshift($categories, 'Rewards');
-      array_unshift($products, $offers);
+      array_push($offers, $promos);
     }
     
     return [
       'categories' => $categories,
+      'offers' => $offers,
       'products' => $products
     ];
   }  

@@ -39,8 +39,8 @@ class OfferServices extends TransformerService {
     return $offers;
   }  
 
-  public function getAllOffers($type) {
-    $offers = Offer::where('type', $type)->get();
+  public function getAllOffers($type, $merchantId) {
+    $offers = Offer::where('type', $type)->where('merchant_id', $merchantId)->get();
 
     if(!$offers) {
       return false;

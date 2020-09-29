@@ -31,5 +31,13 @@ class AuthController extends Controller{
 
 	public function accessToken(){
 		return $this->authServices->accessToken();
+  }
+
+	public function updateAccount(Request $request){
+		return $this->authServices->updateAccount($request);
+  }
+
+  public function getPoints() {
+		return $this->authServices->getPoints();
 	}
 }

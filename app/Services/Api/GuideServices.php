@@ -21,8 +21,12 @@ class GuideServices extends TransformerService {
     $query = $request->search ? $request->search : '';
     $category = $request->category;
     
-    $guides = Guide::where('name', 'like', "%{$query}%")->where('category', 'like', "%{$category}%");
+    $guides = Guide::where('name', 'like', "%{$query}%");
     
+    if($category) {
+      $guides = $guides->where('category', 'like', "%{$category}%");
+    }
+
 		$guides = $guides->paginate($limit);
     $guides = $guides->toArray();
     $guides['data'] = $this->transformCollection($guides['data']);

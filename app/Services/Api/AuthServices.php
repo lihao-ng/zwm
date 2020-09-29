@@ -132,7 +132,39 @@ class AuthServices {
 
 	public function accessToken(){
 		return success();
+  }
+
+  public function updateAccount(Request $request) {
+    $validator = Validator::make($request->all(), [
+      "first_name" => "required",
+      "last_name" => "required",
+			"password" => "required|confirmed|min:6"
+    ]);
+
+    if ($validator->fails()) {
+      return validation_error($validator->errors()->first()); 
+    }
+    
+    $user = current_user();
+    $user->first_name = $request->first_name;
+    $user->last_name = $request->last_name;
+    $user->password = Hash::make($request->password);
+    $user->save();
+
+    return [
+      'first_name' => $user->first_name,
+      'last_name' => $user->last_name,
+    ];
 	}
+  
+  public function getPoints() {
+    $customer = current_user()->customer;
+
+    return [
+      'total_points' => $customer->total_points,
+      'current_points' => $customer->current_points
+    ];
+  }
 
 	public function transform($response, $user) {
 		return [
@@ -141,6 +173,7 @@ class AuthServices {
 			'user_id' => $user->id,
 			'first_name' => $user->first_name,
       'last_name' => $user->last_name,
+      'email' => $user->email,
       'total_points' => $user->customer->total_points,
       'current_points' => $user->customer->current_points,
       'code' => $user->customer->code,

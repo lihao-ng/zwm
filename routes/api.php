@@ -21,6 +21,11 @@ Route::middleware('passport.client.auth')->group(function () {
   Route::middleware('auth:api')->group(function () {
     Route::get('access-token', 'Api\AuthController@accessToken');
     Route::get('logout', 'Api\AuthController@logout');
+
+    Route::post('update-account', 'Api\AuthController@updateAccount');
+
+    // Get latest points
+    Route::get('get-points', 'Api\AuthController@getPoints');
     
     // ROUTES FOR MERCHANTS
     
@@ -44,7 +49,7 @@ Route::middleware('passport.client.auth')->group(function () {
 
     // ROUTES FOR GUIDES
 
-    Route::get('guides', 'Api\GuidesController@index');
+    Route::post('guides', 'Api\GuidesController@index');
     Route::get('guides/{guide}', 'Api\GuidesController@show');
   });
 });
