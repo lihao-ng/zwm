@@ -11,5 +11,9 @@ class Guide extends Model {
     'description',
     'category',
     'recyclable'
-  ]; 
+  ];
+  
+  public function contents(){
+    return $this->hasMany('App\GuideContent');
+  }
 }
