@@ -5,7 +5,8 @@
 @endsection
 
 @section('content')
-{!! Form::open(['route' => ['admin.guides.store'], 'id' => 'FormValidation', 'enctype' => 'multipart/form-data']) !!}
+<guides-component></guides-component>
+{{-- {!! Form::open(['route' => ['admin.guides.store'], 'id' => 'FormValidation', 'enctype' => 'multipart/form-data']) !!}
   <div class="row">
     <div class="col">
       <div class="card p-3">
@@ -102,5 +103,5 @@
       </div>
     </div>
   </div>
-</form>
+</form> --}}
 @endsection

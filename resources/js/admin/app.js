@@ -11,23 +11,10 @@ window.Vue = require('vue');
 // import 'cropperjs/dist/cropper.css';
 // Vue.component("vue-cropper", VueCropper);
 
-
-// Vue.component(
-//   'test-component',
-//   require('../client/node_modules/@admin/Vue/Components/Test.vue').default
-// );
-
 Vue.component(
-	'dashboard-component',
-	require('@admin/Vue/Components/DashboardComponents/DashboardComponent.vue').default
+	'guides-component',
+	require('@admin/Vue/Components/GuidesComponents/GuidesComponent.vue').default
 );
-
-// Vue.component('admin-player-form', require('../client/node_modules/@admin/Vue/Components/Player/PlayerFormComponent.vue').default);
-// Vue.component('admin-team-form', require('../client/node_modules/@admin/Vue/Components/Team/TeamFormComponent.vue').default);
-// Vue.component('player-team-statistic-form', require('../client/node_modules/@admin/Vue/Components/Player_Team/StatisticFormComponent.vue').default);
-
-// Vue.component('director-form-component', require('../client/node_modules/@admin/Vue/Components/AboutUs/DirectorFormComponent.vue').default);
-
 
 const app = new Vue({
 	el: '#vue__app__admin'

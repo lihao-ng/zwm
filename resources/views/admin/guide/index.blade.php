@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+
   <div class="card bootstrap-table">
     <div class="card-body table-full-width">
       <div class="toolbar d-flex mb-3">

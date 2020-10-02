@@ -34,6 +34,14 @@
         </a>
       </li>
 
+      <li class="sidebar-nav-item">
+        <a class="sidebar-nav-link fs-18  {{ active_url('admin/profile') }}"
+          href="{{ route('admin.profile') }}">
+          <i class="fal fa-chess-king-alt"></i>
+          Profile
+        </a>
+      </li>
+
 			{{-- <a class="nav-link collapsed py-1" href="#submenu1sub1" data-toggle="collapse" data-target="#submenu1sub1"><span>Customers</span></a>
 			<div class="collapse" id="submenu1sub1" aria-expanded="false">
 				<ul class="flex-column nav pl-4">

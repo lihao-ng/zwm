@@ -86,13 +86,13 @@
             <i class="fal fa-fist-raised"></i>
             Directors
           </a>
-        </li>
+        </li> --}}
         <li class="nav-item mobile">
           <a class="nav-link fs-18 {{ active_route('admin.profile') }}" href="{{ route('admin.profile') }}">
             <i class="fal fa-chess-king-alt"></i>
             Profile
           </a>
-        </li> --}}
+        </li> 
         <li class="nav-item mobile">
           <a class="nav-link fs-18" href="#">
             <i class="fal fa-sign-out"></i>

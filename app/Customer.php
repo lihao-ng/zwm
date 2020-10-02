@@ -16,4 +16,12 @@ class Customer extends Model {
   public function user(){
     return $this->belongsTo('App\User');
   }
+
+  public static function boot() {
+    parent::boot();
+
+    static::deleting(function($customer) { 
+      $customer->user()->delete();
+    });
+  }
 }
