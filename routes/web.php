@@ -24,11 +24,13 @@ Route::prefix('admin')->name('admin.')->group(function(){
 
   Route::middleware('check.auth:admin')->group(function(){
     Route::get('dashboard', 'Admin\DashboardController@index')->name('dashboard');
-    // Route::get('profile', 'Admin\ProfileController@profile')->name('admin.profile');
-    // Route::post('profile', 'Admin\ProfileController@update')->name('admin.profile.update');
-  	// Route::put('profile', 'Admin\ProfileController@changePassword')->name('admin.profile.password');
+    
+    Route::get('profile', 'Admin\ProfileController@profile')->name('profile');
+    Route::post('profile', 'Admin\ProfileController@update')->name('profile.update');
+  	Route::put('profile', 'Admin\ProfileController@changePassword')->name('profile.password');
 
-    Route::resource('guides', 'Admin\GuidesController');
+    Route::post('guides/{guide}', 'Admin\GuidesController@update')->name('guides.update');
+    Route::resource('guides', 'Admin\GuidesController')->except(['update']);
         
     Route::post('merchants/import', 'Admin\MerchantsController@import')->name('merchants.import');
     Route::resource('merchants', 'Admin\MerchantsController');
@@ -75,6 +77,10 @@ Route::middleware('check.auth:merchant')->group(function(){
   Route::resource('categories', 'Client\CategoriesController');
 
   Route::resource('products', 'Client\ProductsController');
+
+  Route::get('profile', 'Client\ProfileController@profile')->name('profile');
+  Route::put('profile/{merchant}', 'Client\ProfileController@update')->name('profile.update');
+  Route::put('profile', 'Client\ProfileController@changePassword')->name('profile.password');
 
   Route::get('logout', 'Client\AuthController@logout')->name('logout');
 });

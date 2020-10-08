@@ -52,5 +52,19 @@ class User extends Authenticatable {
 
   public function tokens(){
 		return $this->hasMany('App\VerificationToken');
-	}
+  }
+  
+  public static function boot() {
+    parent::boot();
+
+    static::deleting(function($user) { 
+      if($user->customer) {
+        $user->customer()->delete();
+      }else if($user->isMerchant) {
+        $user->merchant()->delete();
+      }else {
+        $user->admin()->delete();
+      }
+    });
+  }
 }

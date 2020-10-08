@@ -54,14 +54,18 @@ class ProductServices extends TransformerService {
   }  
 
   public function search(Request $request) { 
+    $sort = $request->sort ? $request->sort : 'created_at';
+		$order = $request->order ? $request->order : 'asc';
+    $limit = $request->limit ? $request->limit : 10;
     $query = $request->search ? $request->search : '';
-   
-    return $this->transformCollection(Product::where('name', 'like', "%{$query}%")->get());
+    
+    return $this->transformCollection(Product::where('name', 'like', "%{$query}%")->orderBy($sort, $order)->limit($limit)->get());
   }
 
 	public function transform($product) {
 		return [
-			'id' => $product->id,
+      'id' => $product->id,
+      'merchant_id' => $product->category->merchant->id,
 			'name' => $product->name,
       'category' => $product->category->name,
       'description' => $product->description,

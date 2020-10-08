@@ -28,4 +28,18 @@ class Merchant extends Model {
   public function offers() {
     return $this->hasMany('App\Offer');
   }
+
+  public function categories() {
+    return $this->hasMany('App\Category');
+  }
+
+  public static function boot() {
+    parent::boot();
+
+    static::deleting(function($merchant) { 
+      $merchant->offers()->delete(); 
+      $merchant->categories()->delete();
+      $merchant->user()->delete();
+    });
+  }
 }

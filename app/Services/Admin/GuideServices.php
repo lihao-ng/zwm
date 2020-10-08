@@ -3,16 +3,20 @@
 namespace App\Services\Admin;
 
 use App\Guide;
+use App\GuideContent;
 
 use Illuminate\Http\Request;
+use App\Services\Admin\GuideContentServices;
 use App\Services\TransformerService;
 use App\Services\ImageLibraryService;
 
 class GuideServices extends TransformerService{
   protected $imageLibraryService;
+  protected $guideContentServices;
 
-  function __construct(ImageLibraryService $imageLibraryService) {
+  function __construct(ImageLibraryService $imageLibraryService, GuideContentServices $guideContentServices) {
     $this->imageLibraryService = $imageLibraryService;
+    $this->guideContentServices = $guideContentServices;
   }
   
 	public function index($request){
@@ -34,11 +38,12 @@ class GuideServices extends TransformerService{
     $request->validate([
 			'name' => 'required|unique:guides',
 			'category' => 'required|in:Metal,Plastic,Paper,Fabric,Glass,E-Waste',
-      'photo' => 'required|image|max:2000',
+      // 'photo' => 'required|image|max:2000',
 			'description' => 'required',
-			'recyclable' => 'required|in:Yes,No',
-			'photo_upcycling' => 'nullable|image|max:2000',
-      'description_upcycling' => 'nullable'
+      'recyclable' => 'required|in:Yes,No',
+      'contents' => 'required',
+			// 'photo_upcycling' => 'nullable|image|max:2000',
+      // 'description_upcycling' => 'nullable'
     ]);
     
     $guide = new Guide();
@@ -47,47 +52,77 @@ class GuideServices extends TransformerService{
     $guide->description = $request->description;
     $guide->recyclable = $request->recyclable == 'Yes' ? 1 : 0;
     $guide->description_upcycling = $request->description_upcycling;
-    
-    $photoName = $this->imageLibraryService->create($request->file('photo'), 'guides');
-    $photoUpName = $this->imageLibraryService->create($request->file('photo_upcycling'), 'guides');
-    
-    $guide->photo = $photoName;
-    $guide->photo_upcycling = $photoUpName;
-
     $guide->save();
 
-		return redirect()->route('admin.guides.index');
+    foreach(json_decode($request->contents) as $content) {
+      $createdGuideContent = new GuideContent();
+      $createdGuideContent->guide_id = $guide->id;
+      $createdGuideContent->name = $content->name;
+      $createdGuideContent->description = $content->description;
+      $createdGuideContent->save();
+    }
+    
+    // $photoName = $this->imageLibraryService->create($request->file('photo'), 'guides');
+    // $photoUpName = $this->imageLibraryService->create($request->file('photo_upcycling'), 'guides');
+    
+    // $guide->photo = $photoName;
+    // $guide->photo_upcycling = $photoUpName;
+
+		return route('admin.guides.index');
   }
   
   public function update(Request $request, Guide $guide){
     $request->validate([
 			'name' => 'required|unique:guides,name,' . $guide->id,
 			'category' => 'required|in:Metal,Plastic,Paper,Fabric,Glass,E-Waste',
-      'photo' => 'sometimes|image|max:2000',
+      // 'photo' => 'sometimes|image|max:2000',
 			'description' => 'required',
-			'recyclable' => 'required|in:Yes,No',
-			'photo_upcycling' => 'nullable|image|max:2000',
-      'description_upcycling' => 'nullable'
+      'recyclable' => 'required|in:Yes,No',
+      'contents' => 'required',
+			// 'photo_upcycling' => 'nullable|image|max:2000',
+      // 'description_upcycling' => 'nullable'
     ]);
 
-    if(!$guide->photo && !$request->photo) {
-      return redirect()->back()->withInput()->withErrors('The photo field is required.');
-    }
+    // if(!$guide->photo && !$request->photo) {
+    //   return redirect()->back()->withInput()->withErrors('The photo field is required.');
+    // }
 
     $guide->name = $request->name;
     $guide->category = $request->category;
     $guide->description = $request->description;
     $guide->recyclable = $request->recyclable == 'Yes' ? 1 : 0;
     $guide->description_upcycling = $request->description_upcycling;
-
-    $photoName = $this->imageLibraryService->update($request->file('photo'), $guide->photo, 'guides');
-    $photoUpName = $this->imageLibraryService->update($request->file('photo_upcycling'), $guide->photo_upcycling, 'guides');
-
-    $guide->photo = $photoName;
-    $guide->photo_upcycling = $photoUpName;
     $guide->save();
 
-		return redirect()->route('admin.guides.index');
+    foreach(json_decode($request->contents) as $content) {
+      if(!empty($content->deleted)) {
+        $guideContent = GuideContent::find($content->id);
+       
+        $guideContent->delete();
+      }elseif($content->id != -1) {
+        $guideContent = GuideContent::find($content->id);
+        $guideContent->guide_id = $guide->id;
+        $guideContent->name = $content->name;
+        $guideContent->description = $content->description;
+
+        $guideContent->save();
+      } else {
+        $guideContent = new GuideContent();
+        $guideContent->guide_id = $guide->id;
+        $guideContent->name = $content->name;
+        $guideContent->description = $content->description;
+        
+        $guideContent->save();
+      }  
+    }
+
+    // $photoName = $this->imageLibraryService->update($request->file('photo'), $guide->photo, 'guides');
+    // $photoUpName = $this->imageLibraryService->update($request->file('photo_upcycling'), $guide->photo_upcycling, 'guides');
+
+    // $guide->photo = $photoName;
+    // $guide->photo_upcycling = $photoUpName;
+    
+		return route('admin.guides.index');
   }
 
 	public function transform($guide){
@@ -100,6 +135,7 @@ class GuideServices extends TransformerService{
 			'recyclable' => $guide->recyclable ? 'Yes' : 'No',
       'photo_upcycling' => $this->imageLibraryService->fullPath($guide->photo_upcycling),
       'description_upcycling' => $guide->description_upcycling,
+      'contents' => $this->guideContentServices->transformCollection($guide->contents)
 		];
 	}
 }

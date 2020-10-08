@@ -87,6 +87,13 @@
             Award Points
           </a>
         </li>
+
+        <li class="nav-item mobile">
+          <a class="nav-link fs-18 {{ active_route('profile') }}" href="{{ route('profile') }}">
+            <i class="fal fa-chess-king-alt"></i>
+            Profile
+          </a>
+        </li> 
         
         <li class="nav-item mobile">
           <a class="nav-link fs-18" href="#">

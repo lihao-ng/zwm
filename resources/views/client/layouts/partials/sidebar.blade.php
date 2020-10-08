@@ -81,6 +81,14 @@
           Award Points
         </a>
       </li>
+
+      <li class="sidebar-nav-item">
+        <a class="sidebar-nav-link fs-18  {{ active_url('profile') }}"
+          href="{{ route('profile') }}">
+          <i class="fal fa-chess-king-alt"></i>
+          Profile
+        </a>
+      </li>
 		
 			<li class="sidebar-nav-item">
 				<a class="sidebar-nav-link fs-18" href="{{ route('logout') }}">

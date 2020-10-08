@@ -11,9 +11,11 @@ use Illuminate\Http\Request;
 
 class GuideServices extends TransformerService {
   protected $imageLibraryService;
+  protected $guideContentServices;
 
-  function __construct(ImageLibraryService $imageLibraryService) {
+  function __construct(ImageLibraryService $imageLibraryService, GuideContentServices $guideContentServices) {
     $this->imageLibraryService = $imageLibraryService;
+    $this->guideContentServices = $guideContentServices;
   }
 
 	public function index(Request $request) {
@@ -45,7 +47,8 @@ class GuideServices extends TransformerService {
       'description' => $guide->description,
       'recyclable' => $guide->recyclable ? 'Recyclable' : 'Not Recyclable',
       'photo_upcycling' => $this->imageLibraryService->fullPath($guide->photo_upcycling),
-      'description_upcycling' => $guide->description_upcycling
+      'description_upcycling' => $guide->description_upcycling,
+      'contents' => $this->guideContentServices->transformCollection($guide->contents)
 		];
   }
 }

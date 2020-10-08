@@ -11,5 +11,17 @@ class Guide extends Model {
     'description',
     'category',
     'recyclable'
-  ]; 
+  ];
+  
+  public function contents(){
+    return $this->hasMany('App\GuideContent');
+  }
+ 
+  public static function boot() {
+    parent::boot();
+
+    static::deleting(function($guide) { 
+      $guide->contents()->delete();
+    });
+  }
 }

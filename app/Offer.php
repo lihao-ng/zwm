@@ -23,4 +23,12 @@ class Offer extends Model {
   public function promocodes(){
     return $this->hasMany('App\Promocode');
   }
+
+  public static function boot() {
+    parent::boot();
+
+    static::deleting(function($offer) { 
+      $offer->promocodes()->delete();
+    });
+  }
 }
