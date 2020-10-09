@@ -23,6 +23,7 @@ class CreateOffersTable extends Migration
             $table->string('description')->nullable();
             $table->string('points')->nullable();
             $table->string('photo')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

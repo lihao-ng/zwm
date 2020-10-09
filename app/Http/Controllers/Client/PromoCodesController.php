@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Client;
 
-use App\PromoCode;
+use App\Promocode;
 use App\Offer;
 use App\Services\Client\PromoCodeServices;
 

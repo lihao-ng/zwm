@@ -3,8 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class TransactionItem extends Model {
+  use SoftDeletes;
+  
   protected $fillable = [
     'transaction_id',
     'offer_id',

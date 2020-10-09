@@ -28,6 +28,7 @@ class CreateMerchantsTable extends Migration
             $table->text('other_information')->nullable();
             $table->string('photo')->nullable();
             $table->string('approved')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

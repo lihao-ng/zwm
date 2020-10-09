@@ -22,6 +22,7 @@ class CreateGuidesTable extends Migration
             $table->boolean('recyclable')->default(false);
             $table->string('photo_upcycling')->nullable();
             $table->text('description_upcycling')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

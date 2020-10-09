@@ -20,6 +20,7 @@ class CreateCustomersTable extends Migration
             $table->integer('current_points')->default(0);
             $table->string('code')->unique();
             $table->string('qr_code')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -43,7 +43,7 @@ class GuidesTableSeeder extends Seeder{
             "description" => "Some aluminium beverage bottles are designed to be reused."
           ],
           [
-            "name" => "Recycle bin",
+            "name" => "Recycle",
             "description" => "A lot of recyclables end up at landfills because of food contamination. Make sure your recyclables contain no residual food debris. Give food and beverage containers a light rinse if necessary.\nRecycling must be loose(free of a plastic bag), clean, empty and dry."
           ]
         ]
@@ -59,7 +59,7 @@ class GuidesTableSeeder extends Seeder{
             "description" => "There are plenty of ways you can reuse that milk or juice carton for crafting - from improvised toys to bird boxes. https://www.redtedart.com/milk-carton-crafts-juice-tetra-pack-crafts/"
           ],
           [
-            "name" => "Recycle bin",
+            "name" => "Recycle",
             "description" => "Break and flatten boxes and other paper items with hollow space before putting them into your 'Recycle' bin.\n\nA lot of recyclables end up at landfills because of food contamination. Make sure your recyclables contain no residual food debris. Give food and beverage containers a light rinse if necessary.\n\nRecycling must be loose(free of a plastic bag), clean, empty and dry."
           ]
         ]
@@ -179,7 +179,7 @@ class GuidesTableSeeder extends Seeder{
             "description" => "There are many ways to reduce fabric waste, from reducing the amount you purchase to ensuring you get the most use out of each item you own. Below area few tips for reducing your fabric waste.\n\nBuy Only What You Need\nBefore you need to 'Marie Kondo' your closets, consider holding off on those new clothing purchases. Consider setting personal guidelines for what you buy such as 'only one new sweater this season' just to see how that impacts your buying decisions, you may just surprise yourself!\n\nExtend the Life of What You Own\nWhen new items can be a click away, it can seem easier to buy new rather than mending an existing item. However, just by keeping a mending kit and spending a few minutes might make that item reusable and even stylish... distressed jeans anyone?\n\nShare and Exchange Used Items\nInstead of purchasing new clothes or linens, organizing a fabric/clothing swap between friends. Clothing swaps range from simple, bring it all to one location and whatever is left over is donated, to specific rules such as each person brings only a certain number of items and must take back what's not swapped. Either way, a clothing swap is a great way to reduce buying new fabrics and extend the life of currently existing ones."
           ],
           [
-            "name" => "Drop-Off",
+            "name" => "Drop-off",
             "description" => "Check out our map to find places where you can drop them off!"
           ]
         ]
@@ -599,7 +599,7 @@ class GuidesTableSeeder extends Seeder{
         "recyclable" => "Yes",
         "contents" => [
           [
-            "name" => "Drop-Off",
+            "name" => "Drop-off",
             "description" => "Check out our map to find places where you can drop them off!"
           ],
           [
@@ -615,7 +615,7 @@ class GuidesTableSeeder extends Seeder{
         "recyclable" => "Yes",
         "contents" => [
           [
-            "name" => "Drop-Off",
+            "name" => "Drop-off",
             "description" => "Check out our map to find places where you can drop them off!"
           ],
           [
@@ -635,7 +635,7 @@ class GuidesTableSeeder extends Seeder{
             "description" => "You can sell, gift or dondate your unwanted glasses or sunglasses in good condition. Some shops accept glasses in good condition as donations and distribute them worldwide to children and adults in need."
           ],
           [
-            "name" => "Drop-Off",
+            "name" => "Drop-off",
             "description" => "Check out our map to find places where you can drop them off!"
           ],
           [

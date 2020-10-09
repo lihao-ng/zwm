@@ -17,6 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->integer('merchant_id');
             $table->string('name')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

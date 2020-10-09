@@ -4,7 +4,7 @@ namespace App\Services\Api;
 
 use App\Customer;
 use App\Offer;
-use App\PromoCode;
+use App\Promocode;
 
 use App\Services\ImageLibraryService;
 use App\Services\TransformerService;
@@ -37,7 +37,7 @@ class PromoCodeServices extends TransformerService {
     $customer->current_points -= $offer->points;
     $customer->save();
 
-    $validPromoCode = PromoCode::where('offer_id', $offer->id)->where('customer_id', null)->first();
+    $validPromoCode = Promocode::where('offer_id', $offer->id)->where('customer_id', null)->first();
     $validPromoCode->customer_id = $customer->id;
     $validPromoCode->qr_code = $this->imageLibraryService->createQR($validPromoCode->code, 'qrs/promocodes');
   

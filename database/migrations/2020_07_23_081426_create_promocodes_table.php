@@ -21,6 +21,7 @@ class CreatePromocodesTable extends Migration
             $table->string('code')->unique();
             $table->string('qr_code')->nullable();
             $table->integer('used')->default(0);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
