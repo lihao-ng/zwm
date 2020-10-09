@@ -18,6 +18,7 @@ class CreateGuideContentsTable extends Migration
             $table->integer('guide_id')->nullable();
             $table->string('name')->nullable();
             $table->text('description')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
