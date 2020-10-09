@@ -19,6 +19,7 @@ class CreateTransactionsTable extends Migration
             $table->string('merchant_id');
             $table->string('type')->nullable();
             $table->integer('total_points')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

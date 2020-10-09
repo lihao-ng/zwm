@@ -19,6 +19,7 @@ class CreateTransactionItemsTable extends Migration
             $table->integer('offer_id');
             $table->integer('quantity')->nullable();
             $table->integer('points')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
