@@ -24,7 +24,7 @@ class MerchantServices extends TransformerService {
 		$order = $request->order ? $request->order : 'desc';
 		$limit = $request->limit ? $request->limit : 10;
     $query = $request->search ? $request->search : '';
-    $categories = $request->categories;
+    $categories = is_string($request->categories) ? json_decode($request->categories) : $request->categories;
     
     $merchants = Merchant::where('name', 'like', "%{$query}%")->where('approved', 1)->orderBy($sort, $order);
     
@@ -64,15 +64,26 @@ class MerchantServices extends TransformerService {
       $request->lat
     );    
     
-    $merchants =  Merchant::select('*')->having(DB::raw($distance_select), '<=', 15);
+    $merchants =  Merchant::select('*')->having(DB::raw($distance_select), '<=', 15)->where('approved', 1);
+    $categories = is_string($request->categories) ? json_decode($request->categories) : $request->categories;
 
-    if($request->categories) {
-      $merchants = $merchants->whereIn('category', $request->categories);
+    if($categories) {
+      $merchants = $merchants->whereIn('category', $categories);
     }
 
-    return $merchants->get();
+    return $this->transformCollection($merchants->get());
   }
 
+  public function trimUrl($url) {
+    if(!$url) {
+      return null;
+    }
+
+    $urls = explode('http', $url);
+    $url = isset($urls[1]) ? $urls[1] : $urls[0];
+
+    return 'http' . $url;
+  }
   
 	public function transform($merchant) {
     $merchant = Merchant::find($merchant['id']);
@@ -87,7 +98,7 @@ class MerchantServices extends TransformerService {
       'lat' => $merchant->lat,
       'lng' => $merchant->lng,
       'business_hours' => $merchant->business_hours,
-      'link' => $merchant->link,
+      'link' => $this->trimUrl($merchant->link),
       'other_information' => $merchant->other_information,
       'photo' => $this->imageLibraryService->fullPath($merchant->photo)
 		];

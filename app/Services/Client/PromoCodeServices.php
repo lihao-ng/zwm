@@ -2,7 +2,7 @@
 
 namespace App\Services\Client;
 
-use App\PromoCode;
+use App\Promocode;
 use App\Offer;
 
 use Illuminate\Http\Request;
@@ -23,7 +23,7 @@ class PromoCodeServices extends TransformerService{
 		$offset = $request->offset ? $request->offset : 0;
 		$query = $request->search ? $request->search : '';
 
-    $promoCodes = PromoCode::whereHas('offer', function($q) use ($query){
+    $promoCodes = Promocode::whereHas('offer', function($q) use ($query){
       $q->where('merchant_id', current_user()->merchant->id);
     })->where('code', 'like', "%{$query}%");
     

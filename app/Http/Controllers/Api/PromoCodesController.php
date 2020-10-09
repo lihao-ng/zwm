@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\PromoCode;
-
 use App\Services\Api\PromoCodeServices;
 
 use Illuminate\Http\Request;
