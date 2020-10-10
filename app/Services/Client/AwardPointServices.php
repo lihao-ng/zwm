@@ -30,13 +30,18 @@ class AwardPointServices extends TransformerService{
   public function create(Request $request){
     $request->validate([ 
       'unique_code' => 'required',
-      'products' => 'required'
     ]);
     
     $customer = Customer::where('code', $request->unique_code)->first();
+    $products = json_decode($request->products);
+    $customItems = json_decode($request->custom_items);
     
     if(!$customer) {
       return validation_error('Not a valid user code.');
+    }
+
+    if($products == null && $customItems == null) {
+      return validation_error('Please add an item.');
     }
 
     $transaction = new Transaction();
@@ -47,10 +52,12 @@ class AwardPointServices extends TransformerService{
 
     $transaction->save();
 
-    $transaction = $this->createTransactionItems($transaction, json_decode($request->products));
+    if($products != null) {
+      $transaction = $this->createTransactionItems($transaction, $products);
+    }
 
-    if($request->custom_items) {
-      $transaction = $this->createCustomItems($transaction, json_decode($request->custom_items));
+    if($customItems != null) {
+      $transaction = $this->createCustomItems($transaction, $customItems);
     }
     
     $customer->total_points += $transaction->total_points;

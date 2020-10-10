@@ -66,8 +66,10 @@ class PromoCodeServices extends TransformerService{
     $request->validate([
 			'code' => 'required'
     ]);
-    
-    $validPromoCode = Promocode::where('code', $request->code)->where('used', 0)->first();
+
+    $validPromoCode = Promocode::whereHas('offer', function($q) {
+      $q->where('merchant_id', current_user()->merchant->id);
+    })->where('code', $request->code)->where('used', 0)->first();
     
     if(!$validPromoCode) {
       return validation_error('Promo Code is not valid.');
@@ -87,7 +89,7 @@ class PromoCodeServices extends TransformerService{
       'points' => $promoCode->offer->points,
       'code' => $promoCode->code,
       'photo' => $this->imageLibraryService->fullPath($promoCode->offer->photo),
-      'redeemed' => $promoCode->transaction_item ? 'Yes' : 'No'
+      'used' => $promoCode->used ? 'Yes' : 'No'
 		];
 	}
 }
