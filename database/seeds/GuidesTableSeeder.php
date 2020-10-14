@@ -154,7 +154,7 @@ class GuidesTableSeeder extends Seeder{
       ],
       [
 				"name" => "Cardboard",
-				"category" => "Hazardous",
+				"category" => "Paper",
         "description" => "Cardboard boxes were the largest single product category of municipal solid waste in 2017 at almost 33 miliion tons (or 12% of total waste generated). The recycling rate for corrugated boxes was 88%.\n\nIt also represent the largest single product of recycled paper and paperboard containers and packaging.",
         "recyclable" => "Yes",
         "contents" => [
@@ -217,7 +217,7 @@ class GuidesTableSeeder extends Seeder{
         ]
       ],
       [
-				"name" => "Cigarett butt",
+				"name" => "Cigarette butt",
 				"category" => "Hazardous",
         "description" => "",
         "recyclable" => "No",

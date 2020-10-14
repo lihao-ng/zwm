@@ -17,7 +17,7 @@ class CreateCustomItemsTable extends Migration
             $table->id();
             $table->integer('transaction_id');
             $table->text('description')->nullable();
-            $table->string('points')->nullable();
+            $table->integer('points')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
