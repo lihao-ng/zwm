@@ -36,14 +36,14 @@ class ProductServices extends TransformerService {
 
     if($acceptingItems) {
       array_unshift($categories, 'Accepting Items');
-      array_push($offers, $acceptingItems);
+      array_unshift($offers, $acceptingItems);
     }
 
     $promos = $offerServices->getAllOffers('Promo', $merchant->id);
     
     if($promos) {
       array_unshift($categories, 'Rewards');
-      array_push($offers, $promos);
+      array_unshift($offers, $promos);
     }
     
     return [
