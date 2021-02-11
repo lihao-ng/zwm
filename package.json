@@ -35,7 +35,7 @@
 				"vue-template-compiler": "^2.6.11"
 		},
 		"dependencies": {
-				"apexcharts": "^3.16.0",
+				"apexcharts": "^3.24.0",
 				"datatables.net-bs4": "^1.10.16",
 				"datatables.net-dt": "^1.10.16",
 				"datatables.net-editor-bs4": "^1.6.3",
