@@ -42,7 +42,7 @@
 				"datatables.net-responsive-bs4": "^2.2.1",
 				"laravel-mix-alias": "^1.0.2",
 				"magnific-popup": "^1.1.0",
-				"moment": "^2.24.0",
+				"moment": "^2.29.2",
 				"vue-apexcharts": "^1.5.2",
 				"vue-google-autocomplete": "^1.1.0",
 				"vue-paginate": "^3.6.0",
