@@ -1,16 +1,9 @@
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
-
 # Zero Waste Dashboard
 
 ### A Dashboard for Zero Waste Merchants for updating their shop's information and awarding points to a customer for purchasing/donating products from/to their shop. (Scroll to the bottom to obtain the dashboard's credential)
 
 - **Merchant Dashboard** - For merchants to handle their shop information, product listing & awarding points to customers
-- **Customer Application ([View here](https://github.com/lihao-ng/zwm_app))** - For customers to access, view nearby shops, use points received and scan objects to determine if it is recyclable
+- **Customer Application ([View here](https://github.com/lihao-ng/zwm_app#readme))** - For customers to access, view nearby shops, use points received and scan objects to determine if it is recyclable
 
 ### Merchant Login
 <img width="1440" alt="image" src="https://user-images.githubusercontent.com/37992455/197696152-2519264c-6807-48ed-ae65-6cbb7c5f9bec.png">
